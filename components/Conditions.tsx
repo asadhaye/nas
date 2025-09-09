@@ -113,29 +113,7 @@ const Conditions: React.FC = () => {
                            </iframe>
                         </div>
                     </ResourceCard>
-                    <ResourceCard title="Interactive Hip Anatomy">
-                         <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex-grow">
-                           <iframe
-                                title="Interactive Hip Anatomy"
-                                className="w-full h-full"
-                                frameBorder="0"
-                                allowFullScreen
-                                src="https://human.biodigital.com/widget/?be=3abz&ui-tools-display=primary&uaid=9aNAJ">
-                           </iframe>
-                        </div>
-                    </ResourceCard>
-                     <ResourceCard title="Interactive Shoulder Anatomy">
-                         <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex-grow">
-                           <iframe
-                                title="Interactive Shoulder Anatomy"
-                                className="w-full h-full"
-                                frameBorder="0"
-                                allowFullScreen
-                                src="https://human.biodigital.com/widget/?be=3ac4&ui-tools-display=primary&uaid=9aNAX">
-                           </iframe>
-                        </div>
-                    </ResourceCard>
-                     <ResourceCard title="Knee Ligament Sprains (ACL/PCL)">
+                    <ResourceCard title="Knee Ligament Sprains (ACL/PCL)">
                          <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex-grow">
                            <iframe
                                 title="Knee Ligament Sprains (ACL/PCL)"

@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Conditions from './components/Conditions';
+import Testimonials from './components/Testimonials';
+import ImageGallery from './components/ImageGallery';
 import Faq from './components/Faq';
 import AiAssistant from './components/AiAssistant';
 import Contact from './components/Contact';
@@ -16,6 +18,8 @@ const App: React.FC = () => {
                 <Hero />
                 <About />
                 <Conditions />
+                <Testimonials />
+                <ImageGallery />
                 <Faq />
                 <AiAssistant />
                 <Contact />

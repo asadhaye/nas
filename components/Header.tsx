@@ -7,6 +7,8 @@ const Header: React.FC = () => {
     const navLinks = [
         { href: '#about', label: 'About Dr. Sher' },
         { href: '#conditions', label: 'Treatments' },
+        { href: '#testimonials', label: 'Testimonials' },
+        { href: '#gallery', label: 'Gallery' },
         { href: '#faq', label: 'Patient FAQs' },
         { href: '#ai-assistant', label: 'AI Assistant' },
         { href: '#contact', label: 'Contact' },

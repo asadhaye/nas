@@ -123,3 +123,16 @@ export const CheckCircleIcon: React.FC<IconProps> = ({ className }) => (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
 );
+
+export const QuoteIcon: React.FC<IconProps> = ({ className }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5 12.5C10.5 14.71 9.71 16.5 8.13 17.88C6.55 19.26 4.68 20 2.5 20C2.17 20 1.83 19.92 1.5 19.75C1.17 19.58 0.88 19.33 0.63 19.01C0.38 18.69 0.21 18.33 0.13 17.93C0.05 17.53 0 17.11 0 16.66C0 15.68 0.22 14.79 0.66 14C1.1 13.21 1.77 12.44 2.67 11.7C3.57 10.96 4.64 10.25 5.88 9.56C7.12 8.87 8.32 8.25 9.48 7.69C9.64 7.59 9.78 7.5 9.9 7.42C10.02 7.34 10.13 7.28 10.23 7.24C10.33 7.2 10.42 7.17 10.5 7.15V12.5ZM21.5 12.5C21.5 14.71 20.71 16.5 19.13 17.88C17.55 19.26 15.68 20 13.5 20C13.17 20 12.83 19.92 12.5 19.75C12.17 19.58 11.88 19.33 11.63 19.01C11.38 18.69 11.21 18.33 11.13 17.93C11.05 17.53 11 17.11 11 16.66C11 15.68 11.22 14.79 11.66 14C12.1 13.21 12.77 12.44 13.67 11.7C14.57 10.96 15.64 10.25 16.88 9.56C18.12 8.87 19.32 8.25 20.48 7.69C20.64 7.59 20.78 7.5 20.9 7.42C21.02 7.34 21.13 7.28 21.23 7.24C21.33 7.2 21.42 7.17 21.5 7.15V12.5Z"/>
+    </svg>
+);
+
+export const CameraIcon: React.FC<IconProps> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+);
