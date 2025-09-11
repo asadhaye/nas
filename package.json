@@ -2,10 +2,14 @@
   "name": "dr-sher-ortho-app",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "esbuild index.tsx --bundle --outfile=dist/bundle.js --jsx=automatic"
+  },
   "dependencies": {
     "@google/genai": "^1.17.0"
   },
   "devDependencies": {
-    "@vercel/node": "^3.2.3"
+    "@vercel/node": "^3.2.3",
+    "esbuild": "^0.21.4"
   }
 }
