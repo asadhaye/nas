@@ -21,19 +21,19 @@ const galleryData = [
         description: "Precision hip replacement for a pain-free life."
     },
     {
-        src: "https://images.unsplash.com/photo-1517137853233-e18b8c2656c3?q=80&w=870&auto=format&fit=crop",
-        alt: "Shoulder anatomy model",
-        title: "Complex Shoulder Repair",
-        description: "Restoring full range of motion after a severe rotator cuff tear."
+        src: "https://images.unsplash.com/photo-1588776814546-da6316ac6404?q=80&w=871&auto=format=fit=crop",
+        alt: "Dr. Sher performing arthroscopic surgery",
+        title: "Arthroscopic Surgery in Action",
+        description: "Dr. Sher performing a minimally invasive knee procedure."
     },
     {
-        src: "https://images.unsplash.com/photo-1526401485004-46910212484b?q=80&w=870&auto=format&fit=crop",
-        alt: "Elderly person walking happily",
-        title: "Renewed Mobility",
-        description: "A patient enjoying a walk after successful joint surgery."
+        src: "https://images.unsplash.com/photo-1551566943-0571329c69e2?q=80&w=870&auto=format=fit=crop",
+        alt: "Dr. Sher at his desk during a consultation",
+        title: "Personalized Consultation",
+        description: "Discussing treatment plans and patient goals."
     },
     {
-        src: "https://images.unsplash.com/photo-1543351611-58f69d7c1762?q=80&w=870&auto=format&fit=crop",
+        src: "https://images.unsplash.com/photo-1543351611-58f69d7c1762?q=80&w=870&auto=format=fit=crop",
         alt: "X-ray of a healed fracture",
         title: "Trauma & Fracture Care",
         description: "Expert fixation leading to complete bone healing."

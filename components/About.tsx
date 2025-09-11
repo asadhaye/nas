@@ -26,8 +26,8 @@ const About: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div>
                         <img 
-                            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=870&auto=format&fit=crop" 
-                            alt="Doctor providing a consultation" 
+                            src="https://images.unsplash.com/photo-1624720114704-358c421713e7?q=80&w=870&auto=format=fit=crop" 
+                            alt="Dr. Sher consulting with a patient" 
                             className="rounded-lg shadow-xl w-full"
                         />
                     </div>

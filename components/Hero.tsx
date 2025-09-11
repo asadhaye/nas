@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
         <section id="hero" className="relative bg-gray-100 text-gray-800 py-20 md:py-24" aria-labelledby="hero-heading">
             <div className="container mx-auto px-6 text-center z-10">
                 <img 
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=870&auto=format&fit=crop" 
+                    src="https://images.unsplash.com/photo-1622253692010-33352da69e0d?q=80&w=870&auto=format&fit=crop" 
                     alt="Dr. Naveed Ali Sher" 
                     className="w-40 h-40 rounded-full object-cover mx-auto mb-6 border-4 border-white shadow-xl" 
                 />
