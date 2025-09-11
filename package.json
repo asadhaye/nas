@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/bundle.js --jsx=automatic --minify && cp index.html dist/"
+    "build": "mkdir -p dist && tailwindcss -i ./input.css -o ./dist/styles.css --minify && esbuild index.tsx --bundle --outfile=dist/bundle.js --jsx=automatic --minify && cp index.html dist/"
   },
   "dependencies": {
     "@google/genai": "^1.17.0",
@@ -14,7 +14,10 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vercel/node": "^3.2.3",
+    "autoprefixer": "^10.4.19",
     "esbuild": "^0.21.4",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
     "typescript": "^5.4.5"
   }
 }

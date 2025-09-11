@@ -7,9 +7,9 @@ interface Message {
     text: string;
 }
 
-// This function maps our frontend Message format to the format the Gemini SDK expects for history.
-function mapMessagesToContent(messages: Message[]) {
-    return messages.map(message => ({
+// Maps the frontend message history to the format required by the generateContent API
+function mapHistoryToContents(history: Message[]) {
+    return history.map(message => ({
         role: message.role,
         parts: [{ text: message.text }],
     }));
@@ -57,18 +57,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
 
         const ai = new GoogleGenAI({ apiKey: API_KEY });
+        const contents = mapHistoryToContents(history);
 
-        // Pass all messages except the last one as history to the model
-        const historyContent = mapMessagesToContent(history.slice(0, -1));
-        
-        const chat = ai.chats.create({
+        const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
-            config: { systemInstruction },
-            history: historyContent,
+            contents: contents,
+            config: {
+                systemInstruction: systemInstruction,
+            },
         });
-
-        const latestMessage = history[history.length - 1].text;
-        const response = await chat.sendMessage({ message: latestMessage });
         
         res.status(200).json({ text: response.text });
 
