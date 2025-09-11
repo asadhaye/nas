@@ -6,10 +6,15 @@
     "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/bundle.js --jsx=automatic --minify && cp index.html dist/"
   },
   "dependencies": {
-    "@google/genai": "^1.17.0"
+    "@google/genai": "^1.17.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@vercel/node": "^3.2.3",
-    "esbuild": "^0.21.4"
+    "esbuild": "^0.21.4",
+    "typescript": "^5.4.5"
   }
 }
