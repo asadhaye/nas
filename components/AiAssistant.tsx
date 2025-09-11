@@ -1,41 +1,35 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import type { Message } from '../types';
-import { createOrthoChatSession, sendMessage } from '../services/geminiService';
+import { getAiResponse } from '../services/geminiService';
 import { PaperAirplaneIcon, SparklesIcon, UserCircleIcon } from './icons';
-import type { Chat } from '@google/genai';
 
 
 const AiAssistant: React.FC = () => {
-    const [chat, setChat] = useState<Chat | null>(null);
     const [messages, setMessages] = useState<Message[]>([]);
     const [userInput, setUserInput] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
 
-    const initializeChat = useCallback(() => {
+    const initializeChat = useCallback(async () => {
+        setIsLoading(true);
+        setError(null);
         try {
-            const chatSession = createOrthoChatSession();
-            setChat(chatSession);
-            setIsLoading(true);
-            sendMessage(chatSession, "Hello").then(initialMessage => {
-                 setMessages([{ id: Date.now(), role: 'model', text: initialMessage }]);
-            }).catch(err => {
-                console.error(err);
-                setError("Failed to start a session with the AI assistant.");
-            }).finally(() => {
-                setIsLoading(false);
-            });
-        } catch (e) {
-            console.error(e);
-            setError("Could not initialize the AI assistant. The API key might be missing.");
+            // Create a dummy user message to kickstart the conversation and get the initial greeting.
+            const initialHistory: Message[] = [{ id: 0, role: 'user', text: 'Hello' }];
+            const initialMessage = await getAiResponse(initialHistory);
+            setMessages([{ id: Date.now(), role: 'model', text: initialMessage }]);
+        } catch (err) {
+            console.error(err);
+            setError("Failed to start a session with the AI assistant.");
+        } finally {
+            setIsLoading(false);
         }
     }, []);
 
     useEffect(() => {
         initializeChat();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [initializeChat]);
     
     useEffect(() => {
         if (chatContainerRef.current) {
@@ -45,16 +39,18 @@ const AiAssistant: React.FC = () => {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!userInput.trim() || isLoading || !chat) return;
+        if (!userInput.trim() || isLoading) return;
 
         const newUserMessage: Message = { id: Date.now(), role: 'user', text: userInput };
-        setMessages(prev => [...prev, newUserMessage]);
+        const currentHistory = [...messages, newUserMessage];
+        
+        setMessages(currentHistory);
         setUserInput('');
         setIsLoading(true);
         setError(null);
 
         try {
-            const responseText = await sendMessage(chat, userInput);
+            const responseText = await getAiResponse(currentHistory);
             const newAiMessage: Message = { id: Date.now() + 1, role: 'model', text: responseText };
             setMessages(prev => [...prev, newAiMessage]);
         } catch (err) {
@@ -95,7 +91,7 @@ const AiAssistant: React.FC = () => {
                                 )}
                             </div>
                         ))}
-                        {isLoading && messages.length > 0 && (
+                        {isLoading && (
                             <div className="flex items-start gap-3">
                                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white">
                                     <SparklesIcon className="h-6 w-6" />
