@@ -1,35 +1,71 @@
 import React from 'react';
+import { StethoscopeIcon, PhoneIcon, MailIcon, LocationMarkerIcon, TwitterIcon, FacebookIcon, LinkedInIcon, InstagramIcon } from './icons';
 
 const Footer: React.FC = () => {
-    const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        const targetId = href.substring(1); // remove the '#'
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const headerOffset = 80; // height of the sticky header
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
     };
 
     return (
-        <footer className="bg-gray-900 text-gray-400 py-8">
-            <div className="container mx-auto px-6 text-center">
-                 <div className="mb-6">
-                    <h4 className="font-semibold text-gray-300 mb-2">Patient Resources</h4>
-                    <div className="flex justify-center items-center gap-x-6 gap-y-2 flex-wrap text-sm">
-                        <a href="https://www.msdmanuals.com/professional/resource" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                            MSD Manuals (Professional)
+        <footer className="bg-slate-900 text-gray-300">
+            <div className="container mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* Column 1: Brand Info */}
+                    <div className="md:col-span-2 lg:col-span-1">
+                        <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="flex items-center gap-2 mb-4">
+                            <StethoscopeIcon className="h-8 w-8 text-blue-400" />
+                            <span className="text-xl font-bold text-white">Dr. Naveed Ali Sher</span>
                         </a>
-                        <a href="https://www.reddit.com/r/ACL/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                            r/ACL Subreddit
-                        </a>
+                        <p className="text-sm text-gray-400">
+                            Dedicated to restoring mobility and enhancing quality of life through expert orthopedic care.
+                        </p>
+                    </div>
+
+                    {/* Column 2: Quick Links */}
+                    <div>
+                        <h4 className="font-semibold text-white mb-4 tracking-wider">Quick Links</h4>
+                        <ul className="space-y-2 text-sm">
+                            <li><a href="#about" onClick={(e) => handleScroll(e, '#about')} className="hover:text-white transition-colors">About Dr. Sher</a></li>
+                            <li><a href="#conditions" onClick={(e) => handleScroll(e, '#conditions')} className="hover:text-white transition-colors">Treatments</a></li>
+                            <li><a href="#gallery" onClick={(e) => handleScroll(e, '#gallery')} className="hover:text-white transition-colors">Gallery</a></li>
+                            <li><a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="hover:text-white transition-colors">Patient FAQs</a></li>
+                            <li><a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 3: Contact Info */}
+                    <div>
+                        <h4 className="font-semibold text-white mb-4 tracking-wider">Contact Info</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li className="flex items-start gap-3"><LocationMarkerIcon className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" /><span>Avenue Mall, Main Ghazi Rd, DHA, Lahore</span></li>
+                            <li className="flex items-start gap-3"><PhoneIcon className="h-5 w-5 text-blue-400 flex-shrink-0" /><span>+92-321-9728977</span></li>
+                            <li className="flex items-start gap-3"><MailIcon className="h-5 w-5 text-blue-400 flex-shrink-0" /><span>dr.naveed@nasorthopedics.com</span></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 4: Social Media */}
+                    <div>
+                        <h4 className="font-semibold text-white mb-4 tracking-wider">Follow Us</h4>
+                        <div className="flex items-center gap-5">
+                            <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors"><TwitterIcon className="h-6 w-6" /></a>
+                            <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-white transition-colors"><FacebookIcon className="h-6 w-6" /></a>
+                            <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors"><LinkedInIcon className="h-6 w-6" /></a>
+                             <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors"><InstagramIcon className="h-6 w-6" /></a>
+                        </div>
                     </div>
                 </div>
-
-                <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Sher. All Rights Reserved.</p>
-                <p className="mt-2 text-sm">
-                    This website is for informational purposes only and does not constitute medical advice.
-                </p>
-                 <div className="mt-4">
-                    <a href="#top" onClick={handleScrollToTop} className="hover:text-white transition-colors">Back to Top</a>
+            </div>
+            <div className="bg-slate-800 py-4">
+                <div className="container mx-auto px-6 text-center text-sm text-gray-400">
+                    <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Sher. All Rights Reserved. This website is for informational purposes only.</p>
                 </div>
             </div>
         </footer>

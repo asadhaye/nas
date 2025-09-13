@@ -6,7 +6,6 @@
     <title>Dr. Naveed Ali Sher - Orthopedic Surgeon</title>
     <meta name="description" content="Official website for Dr. Naveed Ali Sher, a leading consultant orthopedic, trauma, and joint replacement surgeon in Lahore. Specializing in knee replacement, hip replacement, and ACL reconstruction.">
     <meta name="keywords" content="Orthopedic Surgeon Lahore, Dr. Naveed Ali Sher, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA">
-    <link href="styles.css" rel="stylesheet">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -31,12 +30,13 @@
             "knowsAbout": [
               "Total Knee Replacement",
               "Total Hip Replacement",
-              "Arthroscopic ACL Reconstruction",
-              "Complex Trauma",
-              "Fracture Fixation"
+              "ACL Reconstruction",
+              "Arthroscopic Surgery",
+              "Complex Trauma Surgery"and 
             ]
-        }
-      }
+        },
+        "openingHours": "Mo,Tu,We,Th,Fr 10:00-17:00"
+    }
     </script>
 <script type="importmap">
 {
@@ -44,14 +44,17 @@
     "react": "https://aistudiocdn.com/react@^19.1.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
     "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.12",
     "@vercel/node": "https://aistudiocdn.com/@vercel/node@^5.3.22",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0"
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0",
+    "vite": "https://aistudiocdn.com/vite@^7.1.5",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.2"
   }
 }
 </script>
 </head>
 <body class="bg-gray-50">
     <div id="root"></div>
-    <script src="bundle.js" defer></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

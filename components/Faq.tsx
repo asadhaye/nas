@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { FaqItem } from '../types';
 import { PlusIcon, MinusIcon } from './icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqData: FaqItem[] = [
     {
@@ -23,27 +24,44 @@ const faqData: FaqItem[] = [
 
 const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () => void }> = ({ item, isOpen, onClick }) => {
     return (
-        <div className="border-b border-gray-200 py-6">
+        <div className="border-b border-gray-200">
             <button
                 onClick={onClick}
-                className="w-full flex justify-between items-center text-left focus:outline-none"
+                className="w-full flex justify-between items-center text-left py-6 px-4 rounded-lg group hover:bg-gray-50 transition-colors focus:outline-none"
                 aria-expanded={isOpen}
             >
-                <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
-                {isOpen ? <MinusIcon className="h-6 w-6 text-blue-600" /> : <PlusIcon className="h-6 w-6 text-gray-500" />}
-            </button>
-            {isOpen && (
-                <div className="mt-4 text-gray-600 prose">
-                    <p>{item.answer}</p>
+                <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{item.question}</h3>
+                <div className="transform transition-transform duration-300">
+                    {isOpen ? <MinusIcon className="h-6 w-6 text-blue-600" /> : <PlusIcon className="h-6 w-6 text-gray-500" />}
                 </div>
-            )}
+            </button>
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        key="content"
+                        initial="collapsed"
+                        animate="open"
+                        exit="collapsed"
+                        variants={{
+                            open: { opacity: 1, height: 'auto', marginTop: '0px' },
+                            collapsed: { opacity: 0, height: 0, marginTop: '0px' }
+                        }}
+                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pb-6 px-4 text-gray-600 prose-sm">
+                            <p>{item.answer}</p>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
 
 
 const Faq: React.FC = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const handleClick = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -58,7 +76,7 @@ const Faq: React.FC = () => {
                         Answers to common questions from patients, inspired by communities like r/ACL.
                     </p>
                 </div>
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md border border-gray-100">
                     {faqData.map((item, index) => (
                         <FaqItemComponent 
                             key={index} 
