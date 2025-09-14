@@ -36,7 +36,7 @@ const ResourceCard: React.FC<{ title: string; children: React.ReactNode }> = ({ 
 
 const Conditions: React.FC = () => {
     return (
-        <section id="conditions" className="py-20 bg-gray-100" aria-labelledby="conditions-heading">
+        <section id="conditions" className="py-20 bg-white" aria-labelledby="conditions-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 id="conditions-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Orthopedic Services & Specialties</h2>

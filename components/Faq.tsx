@@ -68,7 +68,7 @@ const Faq: React.FC = () => {
     };
 
     return (
-        <section id="faq" className="py-20 bg-white" aria-labelledby="faq-heading">
+        <section id="faq" className="py-20 bg-gray-50" aria-labelledby="faq-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>

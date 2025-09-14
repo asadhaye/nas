@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StethoscopeIcon, MenuIcon, XIcon, PhoneIcon, MailIcon } from './icons';
+import { MenuIcon, XIcon, PhoneIcon, MailIcon } from './icons';
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,9 +48,12 @@ const Header: React.FC = () => {
 
             {/* Main navigation bar */}
             <div className="container mx-auto px-6 flex justify-between items-center h-16">
-                <a href="#" className="flex items-center gap-2 flex-shrink-0" onClick={(e) => handleScroll(e, '#hero')}>
-                    <StethoscopeIcon className="h-8 w-8 text-blue-600" />
-                    <span className="text-xl font-bold text-gray-800 whitespace-nowrap">Dr. Naveed Ali Sher</span>
+                <a href="#" className="flex-shrink-0" onClick={(e) => handleScroll(e, '#hero')}>
+                    <img 
+                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
+                        alt="Dr. Naveed Ali Sher Logo" 
+                        className="h-12 w-auto" 
+                    />
                 </a>
 
                 {/* Desktop Navigation */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StethoscopeIcon, PhoneIcon, MailIcon, LocationMarkerIcon, TwitterIcon, FacebookIcon, LinkedInIcon, InstagramIcon } from './icons';
+import { PhoneIcon, MailIcon, LocationMarkerIcon, TwitterIcon, FacebookIcon, LinkedInIcon, InstagramIcon } from './icons';
 
 const Footer: React.FC = () => {
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -20,9 +20,12 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Column 1: Brand Info */}
                     <div className="md:col-span-2 lg:col-span-1">
-                        <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="flex items-center gap-2 mb-4">
-                            <StethoscopeIcon className="h-8 w-8 text-blue-400" />
-                            <span className="text-xl font-bold text-white">Dr. Naveed Ali Sher</span>
+                        <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="block mb-4">
+                            <img 
+                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
+                                alt="Dr. Naveed Ali Sher Logo" 
+                                className="h-10 w-auto" 
+                            />
                         </a>
                         <p className="text-sm text-gray-400">
                             Dedicated to restoring mobility and enhancing quality of life through expert orthopedic care.
@@ -66,6 +69,9 @@ const Footer: React.FC = () => {
             <div className="bg-slate-800 py-4">
                 <div className="container mx-auto px-6 text-center text-sm text-gray-400">
                     <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Sher. All Rights Reserved. This website is for informational purposes only.</p>
+                    <p className="mt-2">
+                        Made with <span className="text-red-500">&hearts;</span> by <a href="https://www.asadhaye.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-300 hover:text-white transition-colors">Asad Haye</a>
+                    </p>
                 </div>
             </div>
         </footer>

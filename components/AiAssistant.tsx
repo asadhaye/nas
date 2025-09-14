@@ -104,7 +104,7 @@ const AiAssistant: React.FC = () => {
     };
 
     return (
-        <section id="ai-assistant" className="py-20 bg-gray-50" aria-labelledby="ai-assistant-heading">
+        <section id="ai-assistant" className="py-20 bg-white" aria-labelledby="ai-assistant-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="ai-assistant-heading" className="text-3xl md:text-4xl font-bold text-gray-900">AI-Powered Symptom Assistant</h2>

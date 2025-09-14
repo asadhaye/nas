@@ -30,7 +30,7 @@ const testimonials = [
 
 const Testimonials: React.FC = () => {
     return (
-        <section id="testimonials" className="py-20 bg-gray-100" aria-labelledby="testimonials-heading">
+        <section id="testimonials" className="py-20 bg-gray-50" aria-labelledby="testimonials-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Patient Success Stories</h2>

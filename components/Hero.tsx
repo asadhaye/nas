@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
         },
     };
     
-    const imageUrlBase = "https://images.unsplash.com/photo-1576091160550-2173dba9996a?q=80&auto=format&fit=crop";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
 
     return (
         <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white" aria-labelledby="hero-heading">

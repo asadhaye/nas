@@ -28,12 +28,12 @@ const App: React.FC = () => {
         if (keywordsTag) {
             const baseKeywords = "Orthopedic Surgeon Lahore, Dr. Naveed Ali Sher, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA";
             const dynamicKeywords = conditionsData.map(c => c.title).join(', ');
-            keywordsTag.setAttribute('content', `${baseKeywords}, ${dynamicKeywords}`);
+            keywordsTag.setAttribute('content', `${`${baseKeywords}, ${dynamicKeywords}`}`);
         }
     }, []);
 
     return (
-        <div className="bg-gray-50 text-gray-800 font-sans">
+        <div className="bg-white text-gray-800 font-sans">
             <Header />
             <main>
                 <Hero />

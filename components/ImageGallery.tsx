@@ -3,40 +3,40 @@ import { CameraIcon } from './icons';
 
 const galleryData = [
     {
-        src: "https://images.unsplash.com/photo-1618939307313-037130c0c1a8?q=80&auto=format&fit=crop",
-        alt: "X-ray of a total knee replacement",
-        title: "Total Knee Replacement",
-        description: "Post-operative X-ray showing successful implant placement."
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20knee%20joint.png",
+        alt: "High-resolution X-ray of a knee joint",
+        title: "Advanced Knee Diagnostics",
+        description: "Detailed imaging for precise diagnosis of knee conditions."
     },
     {
-        src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&auto=format&fit=crop",
-        alt: "Patient running after ACL reconstruction",
-        title: "ACL Reconstruction Success",
-        description: "Patient returned to running and sports 6 months after surgery."
+        src: "https://images.unsplash.com/photo-1517865288-975210e956a4?q=80&auto=format&fit=crop",
+        alt: "Patient undergoing physical therapy for their leg",
+        title: "Guided Rehabilitation",
+        description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://images.unsplash.com/photo-1627993093958-3791f132646d?q=80&auto=format&fit=crop",
-        alt: "Hip replacement x-ray",
-        title: "Hip Arthroplasty",
-        description: "Precision hip replacement for a pain-free life."
+        src: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&auto=format&fit=crop",
+        alt: "Surgeon reviewing a hip X-ray",
+        title: "Surgical Precision",
+        description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://images.unsplash.com/photo-1588776814546-da6316ac6404?q=80&auto=format&fit=crop",
-        alt: "Dr. Sher performing arthroscopic surgery",
-        title: "Arthroscopic Surgery in Action",
-        description: "Dr. Sher performing a minimally invasive knee procedure."
+        src: "https://images.unsplash.com/photo-1581594549591-ff245842cda0?q=80&auto=format&fit=crop",
+        alt: "Surgical team working in a modern operating room",
+        title: "State-of-the-Art Procedures",
+        description: "Utilizing the latest technology in a sterile surgical environment."
     },
     {
-        src: "https://images.unsplash.com/photo-1551566943-0571329c69e2?q=80&auto=format&fit=crop",
-        alt: "Dr. Sher at his desk during a consultation",
-        title: "Personalized Consultation",
-        description: "Discussing treatment plans and patient goals."
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
+        alt: "Doctor discussing results with a patient",
+        title: "Empathetic Patient Care",
+        description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
     {
-        src: "https://images.unsplash.com/photo-1543351611-58f69d7c1762?q=80&auto=format&fit=crop",
-        alt: "X-ray of a healed fracture",
-        title: "Trauma & Fracture Care",
-        description: "Expert fixation leading to complete bone healing."
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/%20X-ray%20of%20a%20human%20spine.png",
+        alt: "X-ray of a human spine",
+        title: "Complex Spine & Trauma",
+        description: "Expert care for complex trauma and spinal conditions."
     }
 ];
 

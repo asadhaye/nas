@@ -17,7 +17,7 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
 
 
 const About: React.FC = () => {
-    const imageUrlBase = "https://images.unsplash.com/photo-1624720114704-358c421713e7?q=80&auto=format&fit=crop";
+    const imageUrlBase = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop";
     
     return (
         <section id="about" className="py-20 bg-gray-50" aria-labelledby="about-heading">

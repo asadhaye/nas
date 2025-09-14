@@ -4,15 +4,6 @@ type IconProps = {
     className?: string;
 };
 
-// General & Header
-export const StethoscopeIcon: React.FC<IconProps> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M4.8 2.3A.3.3 0 1 0 5.2 2l-1.8 3.2A2 2 0 0 0 5.2 8l1.8 3.2a.3.3 0 1 0 .5-.3L5.7 7.7a2 2 0 0 0-1.8-3.2L2 2.3a.3.3 0 0 0-.4.4l3.2 1.8a2 2 0 0 0 3.2 1.8l3.2 1.8a.3.3 0 0 0 .3-.5L8.3 5.7a2 2 0 0 0-3.2-1.8L2.3 2"/>
-        <path d="m12.5 6.5 3 3"/>
-        <path d="M18 22a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/>
-    </svg>
-);
-
 export const MenuIcon: React.FC<IconProps> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
         <line x1="3" y1="12" x2="21" y2="12"></line>
