@@ -28,8 +28,8 @@ const About: React.FC = () => {
                         <div className="md:w-1/3">
                             <img 
                                 loading="lazy"
-                                src={`${imageUrlBase}&w=400`}
-                                srcSet={`${imageUrlBase}&w=400 400w, ${imageUrlBase}&w=800 800w`}
+                                src={`${imageUrlBase}?w=400`}
+                                srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w`}
                                 sizes="(max-width: 768px) 100vw, 33vw"
                                 alt="Dr. Shair professional headshot" 
                                 className="h-64 w-full object-cover md:h-full"

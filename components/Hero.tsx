@@ -99,8 +99,8 @@ const Hero: React.FC = () => {
                     >
                         <img 
                             fetchPriority="high"
-                            src={`${imageUrlBase}&w=800`} 
-                            srcSet={`${imageUrlBase}&w=400 400w, ${imageUrlBase}&w=800 800w, ${imageUrlBase}&w=1200 1200w`}
+                            src={`${imageUrlBase}?w=800`} 
+                            srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w, ${imageUrlBase}?w=1200 1200w`}
                             sizes="(max-width: 768px) 100vw, 50vw"
                             alt="Professional portrait of Dr. Naveed Ali Shair" 
                             className="w-full max-w-md h-auto rounded-full object-cover shadow-2xl border-8 border-white/20"
