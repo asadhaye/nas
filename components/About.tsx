@@ -3,13 +3,13 @@ import { AwardIcon, BookOpenIcon, UserIcon } from './icons';
 import SafeImage from './SafeImage';
 
 const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-    <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
         <div className="flex items-start gap-4">
             <div className="flex-shrink-0 bg-blue-100 text-blue-600 p-3 rounded-full">
                 {icon}
             </div>
             <div>
-                <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+                <h3 className="text-lg font-semibold text-gray-900 font-heading">{title}</h3>
                 <p className="text-gray-700 mt-1 text-sm">{children}</p>
             </div>
         </div>
@@ -21,7 +21,7 @@ const About: React.FC = () => {
     const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Portrait.png";
     
     return (
-        <section id="about" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="about-heading">
+        <section id="about" tabIndex={-1} className="py-24 bg-white focus:outline-none" aria-labelledby="about-heading">
             <div className="container mx-auto px-6">
                 <div className="max-w-5xl mx-auto">
                     {/* Main Profile Card */}
@@ -38,7 +38,7 @@ const About: React.FC = () => {
                         </div>
                         <div className="p-8 md:p-12 md:w-2/3">
                             <p className="text-sm font-semibold text-blue-600 tracking-wider uppercase">Meet Your Surgeon</p>
-                            <h2 id="about-heading" className="text-3xl font-bold text-gray-900 mt-2">Dr. Naveed Ali Shair</h2>
+                            <h2 id="about-heading" className="text-4xl font-bold text-gray-900 mt-2 font-heading">Dr. Naveed Ali Shair</h2>
                             <p className="mt-4 text-gray-700 leading-relaxed">
                                 Dr. Shair is a distinguished Consultant Orthopedic, Trauma, and Joint Replacement Surgeon with a profound commitment to patient-centered care. Combining advanced surgical techniques with a compassionate approach, his mission is to restore mobility, alleviate pain, and significantly improve the quality of life for every patient he treats.
                             </p>

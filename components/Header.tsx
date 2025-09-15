@@ -55,7 +55,7 @@ const Header: React.FC = () => {
 
             {/* Main navigation bar */}
             <div className="container mx-auto px-6 flex justify-between items-center h-16">
-                <a href="#" className="flex-shrink-0" onClick={(e) => handleScroll(e, '#hero')}>
+                <a href="#" className="flex-shrink-0 font-heading" onClick={(e) => handleScroll(e, '#hero')}>
                     <SafeImage 
                         src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
                         alt="Dr. Naveed Ali Shair Logo" 

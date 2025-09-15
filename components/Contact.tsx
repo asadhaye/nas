@@ -50,10 +50,10 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="contact-heading">
+        <section id="contact" tabIndex={-1} className="py-24 bg-sky-50 focus:outline-none" aria-labelledby="contact-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
-                    <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Get In Touch</h2>
+                    <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">Get In Touch</h2>
                     <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         To schedule an appointment, use the contact details or fill out the form below.
                     </p>
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
                 <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 bg-white p-8 rounded-2xl shadow-lg">
                     {/* Left Side: Info & Form */}
                     <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-6 font-heading">Contact Information</h3>
                         <div className="space-y-5 text-gray-700 mb-10">
                             <InfoItem icon={<LocationMarkerIcon className="h-6 w-6 text-blue-600" />} label="Address" value="Avenue Mall, Main Ghazi Rd, DHA, Lahore" />
                             <InfoItem icon={<PhoneIcon className="h-6 w-6 text-blue-600" />} label="Appointment" value="+92-321-97 28 977" href="tel:+923219728977" />
@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
                             <div className="bg-green-50 border-l-4 border-green-400 text-green-800 p-6 rounded-lg flex items-start gap-4" role="alert">
                                 <CheckCircleIcon className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" />
                                 <div>
-                                    <h4 className="font-bold text-lg">Thank you for your request!</h4>
+                                    <h4 className="font-bold text-lg font-heading">Thank you for your request!</h4>
                                     <p className="mt-1">Our team will contact you shortly to confirm your appointment.</p>
                                 </div>
                             </div>
@@ -82,14 +82,14 @@ const Contact: React.FC = () => {
                                 <InputField id="email" name="email" type="email" label="Email Address" value={formData.email} onChange={handleChange} error={errors.email} />
                                 <TextareaField id="message" name="message" label="Reason for Consultation" value={formData.message} onChange={handleChange} error={errors.message} />
                                 <div>
-                                    <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                    <button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg hover:from-blue-700 hover:to-teal-600 transition-all focus:outline-none focus:ring-4 focus:ring-blue-300">
                                         Submit Request
                                     </button>
                                 </div>
                             </form>
                         )}
                          <div className="mt-10 pt-8 border-t border-gray-200">
-                                <h4 className="text-lg font-semibold text-center text-gray-700 mb-4">Follow on Social Media</h4>
+                                <h4 className="text-lg font-semibold text-center text-gray-700 mb-4 font-heading">Follow on Social Media</h4>
                                 <div className="flex justify-center items-center gap-6">
                                     <SocialLink href="#" icon={<TwitterIcon className="h-6 w-6" />} label="Follow on Twitter" />
                                     <SocialLink href="#" icon={<FacebookIcon className="h-6 w-6" />} label="Follow on Facebook" />
@@ -112,12 +112,11 @@ const Contact: React.FC = () => {
     );
 };
 
-// Helper Components for Contact Form
 const InfoItem: React.FC<{ icon: React.ReactNode; label: string; value: string; href?: string }> = ({ icon, label, value, href }) => (
     <div className="flex items-start gap-4">
         <div className="flex-shrink-0 mt-1">{icon}</div>
         <div>
-            <strong className="text-gray-800">{label}:</strong><br/>
+            <strong className="text-gray-800 font-semibold">{label}:</strong><br/>
             {href ? <a href={href} className="hover:text-blue-600 transition-colors">{value}</a> : <span>{value}</span>}
         </div>
     </div>

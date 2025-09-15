@@ -21,13 +21,13 @@ const ConditionCard: React.FC<ConditionCardProps> = ({ icon: IconComponent, titl
     return (
         <button
             onClick={onClick}
-            className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-teal-400 w-full h-full flex flex-col focus:outline-none focus:ring-4 focus:ring-blue-300"
+            className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-teal-400 w-full h-full flex flex-col focus:outline-none focus:ring-4 focus:ring-blue-300"
             aria-label={`Learn more about ${title}`}
         >
             <div className="inline-block bg-teal-100 rounded-full p-3 mb-4 mx-auto">
                 <IconComponent className="h-8 w-8 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2 font-heading">{title}</h3>
             <p className="text-gray-700 text-sm flex-grow">{summary}</p>
         </button>
     );
@@ -35,9 +35,9 @@ const ConditionCard: React.FC<ConditionCardProps> = ({ icon: IconComponent, titl
 
 
 const ResourceCard: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
         <div className="p-5">
-            <h3 className="text-xl font-semibold text-gray-800 text-center">{title}</h3>
+            <h3 className="text-xl font-semibold text-gray-800 text-center font-heading">{title}</h3>
         </div>
         {children}
     </div>
@@ -70,10 +70,10 @@ const Conditions: React.FC = () => {
 
     return (
         <>
-            <section id="conditions" tabIndex={-1} className="py-20 bg-white focus:outline-none" aria-labelledby="conditions-heading">
+            <section id="conditions" tabIndex={-1} className="py-24 bg-white focus:outline-none" aria-labelledby="conditions-heading">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 id="conditions-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Orthopedic Services & Specialties</h2>
+                        <h2 id="conditions-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">Orthopedic Services & Specialties</h2>
                         <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                             Specializing in a range of advanced procedures to help you regain mobility and live pain-free.
                         </p>
@@ -92,7 +92,7 @@ const Conditions: React.FC = () => {
                     </div>
 
                     <div className="mt-24 text-center">
-                        <h2 id="education-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Patient Education Resources</h2>
+                        <h2 id="education-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">Patient Education Resources</h2>
                         <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                             Explore these interactive resources to better understand your condition and treatment options.
                         </p>
@@ -147,7 +147,7 @@ const Conditions: React.FC = () => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="p-6 flex justify-between items-center border-b border-gray-200">
-                                <h3 id="condition-modal-title" className="text-xl font-bold text-gray-900">{selectedCondition.title}</h3>
+                                <h3 id="condition-modal-title" className="text-xl font-bold text-gray-900 font-heading">{selectedCondition.title}</h3>
                                 <button
                                     onClick={closeModal}
                                     className="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded-full p-1"

@@ -36,28 +36,28 @@ const getInitials = (name: string): string => {
 
 const Testimonials: React.FC = () => {
     return (
-        <section id="testimonials" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="testimonials-heading">
+        <section id="testimonials" tabIndex={-1} className="py-24 bg-sky-50 focus:outline-none" aria-labelledby="testimonials-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Patient Success Stories</h2>
+                    <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">Patient Success Stories</h2>
                     <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Hear from patients who have experienced our dedicated care firsthand.
                     </p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, index) => (
-                        <div key={index} className="bg-white p-8 rounded-lg shadow-lg flex flex-col text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div key={index} className="bg-white p-8 rounded-xl shadow-lg flex flex-col text-center transform hover:-translate-y-2 transition-transform duration-300">
                             <QuoteIcon className="h-10 w-10 text-blue-300 mb-4 mx-auto" />
                             <blockquote className="text-gray-700 italic flex-grow mb-6">
                                 "{testimonial.quote}"
                             </blockquote>
                             <footer className="mt-auto">
-                                <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-blue-100 flex items-center justify-center border-4 border-white shadow-md">
-                                    <span className="text-2xl font-bold text-blue-600" aria-hidden="true">
+                                <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center border-4 border-white shadow-md">
+                                    <span className="text-2xl font-bold text-white" aria-hidden="true">
                                         {getInitials(testimonial.name)}
                                     </span>
                                 </div>
-                                <p className="font-semibold text-gray-800">{testimonial.name}</p>
+                                <p className="font-semibold text-gray-800 font-heading">{testimonial.name}</p>
                             </footer>
                         </div>
                     ))}

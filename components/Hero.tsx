@@ -2,6 +2,24 @@ import React, { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
 import SafeImage from './SafeImage';
 
+const AnimatedBlob: React.FC<{ className: string }> = ({ className }) => (
+    <motion.div
+        className={`absolute rounded-full mix-blend-soft-light filter blur-2xl opacity-30 ${className}`}
+        animate={{
+            x: [0, 20, -20, 0],
+            y: [0, -30, 30, 0],
+            scale: [1, 1.1, 0.9, 1],
+            rotate: [0, 10, -10, 0],
+        }}
+        transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            ease: 'easeInOut'
+        }}
+    />
+);
+
 const Hero: React.FC = () => {
     const appointmentButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -13,7 +31,6 @@ const Hero: React.FC = () => {
         }
     };
 
-    // Updated for a more orchestrated sequence
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
@@ -25,7 +42,6 @@ const Hero: React.FC = () => {
         },
     };
 
-    // Updated to use a spring animation for a more dynamic feel
     const itemVariants: Variants = {
         hidden: { y: 40, opacity: 0 },
         visible: {
@@ -47,8 +63,8 @@ const Hero: React.FC = () => {
 
     return (
         <section id="hero" tabIndex={-1} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white focus:outline-none" aria-labelledby="hero-heading">
-            {/* Background shapes for decorative effect */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 25% 30%, #ffffff 0%, transparent 40%), radial-gradient(circle at 75% 70%, #ffffff 0%, transparent 40%)' }}></div>
+            <AnimatedBlob className="w-96 h-96 bg-teal-300 top-1/4 left-1/4" />
+            <AnimatedBlob className="w-80 h-80 bg-blue-300 bottom-1/4 right-1/4" />
             
             <div className="container mx-auto px-6 z-10">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -67,7 +83,7 @@ const Hero: React.FC = () => {
                         <motion.h1 
                             id="hero-heading" 
                             variants={itemVariants} 
-                            className="text-5xl md:text-7xl font-extrabold tracking-tight my-4"
+                            className="text-5xl md:text-7xl font-extrabold tracking-tight my-4 font-heading"
                             style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.2)' }}
                         >
                             Dr. Naveed Ali Shair
@@ -79,7 +95,7 @@ const Hero: React.FC = () => {
                             <button 
                                 ref={appointmentButtonRef}
                                 onClick={handleScrollToContact} 
-                                className="bg-white text-blue-600 font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-400/40 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
+                                className="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold py-4 px-10 rounded-full text-lg hover:from-blue-600 hover:to-teal-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-400/40 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
                             >
                                 Book Appointment
                             </button>

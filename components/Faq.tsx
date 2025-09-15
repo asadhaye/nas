@@ -45,7 +45,7 @@ const FaqItemComponent: React.FC<FaqItemComponentProps> = ({ item, isOpen, onCli
                 aria-expanded={isOpen}
                 aria-controls={panelId}
             >
-                <h3 id={headingId} className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{item.question}</h3>
+                <h3 id={headingId} className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors font-heading">{item.question}</h3>
                 <div className="transform transition-transform duration-300">
                     {isOpen ? <MinusIcon className="h-6 w-6 text-blue-600" /> : <PlusIcon className="h-6 w-6 text-gray-500" />}
                 </div>
@@ -103,15 +103,15 @@ const Faq: React.FC = () => {
     };
 
     return (
-        <section id="faq" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="faq-heading">
+        <section id="faq" tabIndex={-1} className="py-24 bg-sky-50 focus:outline-none" aria-labelledby="faq-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
-                    <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+                    <h2 id="faq-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">Frequently Asked Questions</h2>
                     <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Answers to common questions from patients, inspired by communities like r/ACL.
                     </p>
                 </div>
-                <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md border border-gray-100">
+                <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg border border-gray-100">
                     {faqData.map((item, index) => (
                         <FaqItemComponent 
                             key={index} 

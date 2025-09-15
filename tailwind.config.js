@@ -6,7 +6,12 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        heading: ['Sora', 'sans-serif'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

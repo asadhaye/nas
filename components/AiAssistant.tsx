@@ -81,13 +81,11 @@ const AiAssistant: React.FC = () => {
     };
 
     const retryLastRequest = async () => {
-        // If messages are empty, it means initialization failed, so retry it.
         if (messages.length === 0) {
             initializeChat();
             return;
         }
 
-        // Otherwise, a user's message failed to get a response. Retry with existing history.
         setIsLoading(true);
         setError(null);
 
@@ -104,10 +102,10 @@ const AiAssistant: React.FC = () => {
     };
 
     return (
-        <section id="ai-assistant" tabIndex={-1} className="py-20 bg-white focus:outline-none" aria-labelledby="ai-assistant-heading">
+        <section id="ai-assistant" tabIndex={-1} className="py-24 bg-white focus:outline-none" aria-labelledby="ai-assistant-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
-                    <h2 id="ai-assistant-heading" className="text-3xl md:text-4xl font-bold text-gray-900">AI-Powered Symptom Assistant</h2>
+                    <h2 id="ai-assistant-heading" className="text-4xl md:text-5xl font-bold text-gray-900 font-heading">AI-Powered Symptom Assistant</h2>
                     <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Have a conversation with our AI assistant for a preliminary check of your symptoms.
                         <br />
@@ -121,7 +119,7 @@ const AiAssistant: React.FC = () => {
                                 <InformationCircleIcon className="h-6 w-6 text-red-500 mt-0.5" />
                             </div>
                             <div>
-                                <p className="font-bold">Important Disclaimer</p>
+                                <p className="font-bold font-heading">Important Disclaimer</p>
                                 <p className="text-sm">This AI assistant is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a physician for a proper diagnosis.</p>
                             </div>
                         </div>
@@ -164,7 +162,7 @@ const AiAssistant: React.FC = () => {
                         {error && (
                             <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-lg text-center">
                                 <AlertTriangleIcon className="h-10 w-10 text-red-500 mx-auto mb-3" />
-                                <p className="font-semibold">Connection Error</p>
+                                <p className="font-semibold font-heading">Connection Error</p>
                                 <p className="text-sm mt-1 mb-4">{error}</p>
                                 <button
                                     onClick={retryLastRequest}
