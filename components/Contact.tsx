@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-gray-50" aria-labelledby="contact-heading">
+        <section id="contact" className="py-20 bg-sky-50" aria-labelledby="contact-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Get In Touch</h2>

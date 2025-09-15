@@ -75,14 +75,14 @@ const Conditions: React.FC = () => {
                            </iframe>
                         </div>
                     </ResourceCard>
-                    <ResourceCard title="Knee Ligament Sprains (ACL/PCL)">
+                    <ResourceCard title="Rotator Cuff Injury">
                          <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex-grow">
                            <iframe
-                                title="Knee Ligament Sprains (ACL/PCL)"
+                                title="Rotator Cuff Injury"
                                 className="w-full h-full"
                                 frameBorder="0"
                                 allowFullScreen
-                                src="https://human.biodigital.com/widget/?be=2Vf7&ui-tools-display=primary&uaid=9aNAd">
+                                src="https://human.biodigital.com/widget/?be=2Pf7&background.colors=0,0,0,1,0,0,0,1&initial.hand-hint=true&ui-fullscreen=true&ui-center=false&ui-dissect=true&ui-zoom=true&ui-help=true&ui-tools-display=primary&ui-info=true&uaid=31nks">
                            </iframe>
                         </div>
                     </ResourceCard>

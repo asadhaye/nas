@@ -1,5 +1,6 @@
-import React from 'react';
-import { CameraIcon } from './icons';
+import React, { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CameraIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
 
 const galleryData = [
     {
@@ -9,19 +10,19 @@ const galleryData = [
         description: "Detailed imaging for precise diagnosis of knee conditions."
     },
     {
-        src: "https://images.unsplash.com/photo-1517865288-975210e956a4?q=80&auto=format&fit=crop",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Patient%20undergoing%20physical%20therapy.png",
         alt: "Patient undergoing physical therapy for their leg",
         title: "Guided Rehabilitation",
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&auto=format&fit=crop",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
         alt: "Surgeon reviewing a hip X-ray",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://images.unsplash.com/photo-1581594549591-ff245842cda0?q=80&auto=format&fit=crop",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
         alt: "Surgical team working in a modern operating room",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
@@ -42,6 +43,36 @@ const galleryData = [
 
 
 const ImageGallery: React.FC = () => {
+    const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+    const openModal = (index: number) => setSelectedImage(index);
+    const closeModal = () => setSelectedImage(null);
+
+    const nextImage = useCallback(() => {
+        if (selectedImage !== null) {
+            setSelectedImage((prev) => (prev! + 1) % galleryData.length);
+        }
+    }, [selectedImage]);
+
+    const prevImage = useCallback(() => {
+        if (selectedImage !== null) {
+            setSelectedImage((prev) => (prev! - 1 + galleryData.length) % galleryData.length);
+        }
+    }, [selectedImage]);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (selectedImage !== null) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImage, nextImage, prevImage]);
+
     return (
         <section id="gallery" className="py-20 bg-white" aria-labelledby="gallery-heading">
             <div className="container mx-auto px-6">
@@ -56,7 +87,12 @@ const ImageGallery: React.FC = () => {
                         const baseUrl = item.src.split('?')[0];
                         const queryParams = "?q=80&auto=format&fit=crop";
                         return (
-                            <div key={index} className="group bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                             <button
+                                key={index}
+                                onClick={() => openModal(index)}
+                                className="group bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 text-left focus:outline-none focus:ring-4 focus:ring-blue-300"
+                                aria-label={`View details for ${item.title}`}
+                            >
                                 <div className="relative">
                                     <img 
                                         loading="lazy"
@@ -73,11 +109,60 @@ const ImageGallery: React.FC = () => {
                                     <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
                                     <p className="mt-1 text-gray-600 text-sm">{item.description}</p>
                                 </div>
-                            </div>
+                            </button>
                         )
                     })}
                 </div>
             </div>
+
+            <AnimatePresence>
+                {selectedImage !== null && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+                        onClick={closeModal}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="gallery-modal-title"
+                        aria-describedby="gallery-modal-description"
+                    >
+                        <motion.div 
+                            initial={{ scale: 0.9, y: 20 }}
+                            animate={{ scale: 1, y: 0 }}
+                            exit={{ scale: 0.9, y: 20 }}
+                            transition={{ duration: 0.2 }}
+                            className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
+                                <img
+                                     src={`${galleryData[selectedImage].src.split('?')[0]}?q=80&auto=format&fit=crop&w=1200`}
+                                     alt={galleryData[selectedImage].alt}
+                                     className="w-full h-auto max-h-[50vh] md:max-h-[90vh] object-contain"
+                                />
+                                <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Previous image">
+                                    <ChevronLeftIcon className="h-6 w-6" />
+                                </button>
+                                <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Next image">
+                                    <ChevronRightIcon className="h-6 w-6" />
+                                </button>
+                            </div>
+
+                            <div className="p-6 md:w-1/3 flex flex-col justify-center">
+                                <h3 id="gallery-modal-title" className="text-2xl font-bold text-gray-900">{galleryData[selectedImage].title}</h3>
+                                <p id="gallery-modal-description" className="mt-2 text-gray-600">{galleryData[selectedImage].description}</p>
+                            </div>
+
+                            <button onClick={closeModal} className="absolute top-2 right-2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close gallery view">
+                                <XIcon className="h-6 w-6" />
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

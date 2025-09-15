@@ -20,7 +20,7 @@ const Header: React.FC = () => {
         if (targetElement) {
             const headerOffset = 80; // height of the sticky header
             const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
             window.scrollTo({
                 top: offsetPosition,

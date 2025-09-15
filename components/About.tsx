@@ -17,10 +17,10 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
 
 
 const About: React.FC = () => {
-    const imageUrlBase = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&auto=format&fit=crop";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Portrait.png";
     
     return (
-        <section id="about" className="py-20 bg-gray-50" aria-labelledby="about-heading">
+        <section id="about" className="py-20 bg-sky-50" aria-labelledby="about-heading">
             <div className="container mx-auto px-6">
                 <div className="max-w-5xl mx-auto">
                     {/* Main Profile Card */}
