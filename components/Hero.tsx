@@ -5,7 +5,10 @@ import { motion, Variants } from 'framer-motion';
 const Hero: React.FC = () => {
     const handleScrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+        const targetElement = document.querySelector('#contact');
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     // FIX: Add explicit Variants type to help TypeScript correctly infer the object structure.
@@ -33,10 +36,10 @@ const Hero: React.FC = () => {
         },
     };
     
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Headshot.png";
 
     return (
-        <section id="hero" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white" aria-labelledby="hero-heading">
+        <section id="hero" tabIndex={-1} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white focus:outline-none" aria-labelledby="hero-heading">
             {/* Background shapes for decorative effect */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 25% 30%, #ffffff 0%, transparent 40%), radial-gradient(circle at 75% 70%, #ffffff 0%, transparent 40%)' }}></div>
             
@@ -50,7 +53,7 @@ const Hero: React.FC = () => {
                         initial="hidden"
                         animate="visible"
                     >
-                        <motion.p variants={itemVariants} className="text-lg md:text-xl text-blue-200 font-medium tracking-wider">
+                        <motion.p variants={itemVariants} className="text-lg md:text-xl text-white/90 font-medium tracking-wider" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.3)' }}>
                             Consultant Orthopedic, Trauma & Joint Replacement Surgeon
                         </motion.p>
                         <motion.h1 
@@ -61,7 +64,7 @@ const Hero: React.FC = () => {
                         >
                             Dr. Naveed Ali Sher
                         </motion.h1>
-                        <motion.p variants={itemVariants} className="text-lg md:text-xl text-blue-100 max-w-xl mx-auto md:mx-0">
+                        <motion.p variants={itemVariants} className="text-lg md:text-xl text-white max-w-xl mx-auto md:mx-0" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.3)' }}>
                             Expert care in knee replacement, hip replacement, and ACL reconstruction to restore your mobility and enhance your quality of life.
                         </motion.p>
                         <motion.div variants={itemVariants} className="mt-10">

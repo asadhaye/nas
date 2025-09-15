@@ -22,15 +22,19 @@ const faqData: FaqItem[] = [
     }
 ];
 
-const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () => void }> = ({ item, isOpen, onClick }) => {
+const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () => void; index: number }> = ({ item, isOpen, onClick, index }) => {
+    const panelId = `faq-panel-${index}`;
+    const headingId = `faq-heading-${index}`;
+
     return (
         <div className="border-b border-gray-200">
             <button
                 onClick={onClick}
                 className="w-full flex justify-between items-center text-left py-6 px-4 rounded-lg group hover:bg-gray-50 transition-colors focus:outline-none"
                 aria-expanded={isOpen}
+                aria-controls={panelId}
             >
-                <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{item.question}</h3>
+                <h3 id={headingId} className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{item.question}</h3>
                 <div className="transform transition-transform duration-300">
                     {isOpen ? <MinusIcon className="h-6 w-6 text-blue-600" /> : <PlusIcon className="h-6 w-6 text-gray-500" />}
                 </div>
@@ -38,6 +42,9 @@ const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () =
             <AnimatePresence initial={false}>
                 {isOpen && (
                     <motion.div
+                        id={panelId}
+                        role="region"
+                        aria-labelledby={headingId}
                         key="content"
                         initial="collapsed"
                         animate="open"
@@ -68,7 +75,7 @@ const Faq: React.FC = () => {
     };
 
     return (
-        <section id="faq" className="py-20 bg-sky-50" aria-labelledby="faq-heading">
+        <section id="faq" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="faq-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
@@ -81,6 +88,7 @@ const Faq: React.FC = () => {
                         <FaqItemComponent 
                             key={index} 
                             item={item}
+                            index={index}
                             isOpen={openIndex === index}
                             onClick={() => handleClick(index)}
                         />

@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="py-20 bg-sky-50" aria-labelledby="contact-heading">
+        <section id="contact" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="contact-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Get In Touch</h2>
@@ -91,10 +91,10 @@ const Contact: React.FC = () => {
                          <div className="mt-10 pt-8 border-t border-gray-200">
                                 <h4 className="text-lg font-semibold text-center text-gray-700 mb-4">Follow on Social Media</h4>
                                 <div className="flex justify-center items-center gap-6">
-                                    <SocialLink href="#" icon={<TwitterIcon className="h-6 w-6" />} />
-                                    <SocialLink href="#" icon={<FacebookIcon className="h-6 w-6" />} />
-                                    <SocialLink href="#" icon={<LinkedInIcon className="h-6 w-6" />} />
-                                    <SocialLink href="#" icon={<InstagramIcon className="h-6 w-6" />} />
+                                    <SocialLink href="#" icon={<TwitterIcon className="h-6 w-6" />} label="Follow on Twitter" />
+                                    <SocialLink href="#" icon={<FacebookIcon className="h-6 w-6" />} label="Follow on Facebook" />
+                                    <SocialLink href="#" icon={<LinkedInIcon className="h-6 w-6" />} label="Follow on LinkedIn" />
+                                    <SocialLink href="#" icon={<InstagramIcon className="h-6 w-6" />} label="Follow on Instagram" />
                                 </div>
                             </div>
                     </div>
@@ -149,8 +149,8 @@ const TextareaField: React.FC<{ id: string; name: string; label: string; value: 
     </div>
 );
 
-const SocialLink: React.FC<{ href: string; icon: React.ReactNode }> = ({ href, icon }) => (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition-colors">
+const SocialLink: React.FC<{ href: string; icon: React.ReactNode; label: string; }> = ({ href, icon, label }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition-colors" aria-label={label}>
         {icon}
     </a>
 );

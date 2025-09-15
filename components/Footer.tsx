@@ -4,13 +4,17 @@ import { PhoneIcon, MailIcon, LocationMarkerIcon, TwitterIcon, FacebookIcon, Lin
 const Footer: React.FC = () => {
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        const targetId = href.substring(1); // remove the '#'
-        const targetElement = document.getElementById(targetId);
+        const targetElement = document.querySelector(href);
         if (targetElement) {
             const headerOffset = 80; // height of the sticky header
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.scrollY - headerOffset;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+            // Defer focus shift until after the smooth scroll animation
+            setTimeout(() => {
+                (targetElement as HTMLElement).focus({ preventScroll: true });
+            }, 500);
         }
     };
 
@@ -58,10 +62,10 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="font-semibold text-white mb-4 tracking-wider">Follow Us</h4>
                         <div className="flex items-center gap-5">
-                            <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors"><TwitterIcon className="h-6 w-6" /></a>
-                            <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-white transition-colors"><FacebookIcon className="h-6 w-6" /></a>
-                            <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors"><LinkedInIcon className="h-6 w-6" /></a>
-                             <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors"><InstagramIcon className="h-6 w-6" /></a>
+                            <a href="#" aria-label="Follow on Twitter" className="text-gray-400 hover:text-white transition-colors"><TwitterIcon className="h-6 w-6" /></a>
+                            <a href="#" aria-label="Follow on Facebook" className="text-gray-400 hover:text-white transition-colors"><FacebookIcon className="h-6 w-6" /></a>
+                            <a href="#" aria-label="Follow on LinkedIn" className="text-gray-400 hover:text-white transition-colors"><LinkedInIcon className="h-6 w-6" /></a>
+                             <a href="#" aria-label="Follow on Instagram" className="text-gray-400 hover:text-white transition-colors"><InstagramIcon className="h-6 w-6" /></a>
                         </div>
                     </div>
                 </div>

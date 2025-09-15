@@ -26,6 +26,11 @@ const Header: React.FC = () => {
                 top: offsetPosition,
                 behavior: 'smooth'
             });
+
+            // Defer focus shift until after the smooth scroll animation
+            setTimeout(() => {
+                (targetElement as HTMLElement).focus({ preventScroll: true });
+            }, 500);
         }
         setIsMenuOpen(false);
     };

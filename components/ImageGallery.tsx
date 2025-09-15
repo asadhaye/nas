@@ -16,13 +16,13 @@ const galleryData = [
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20reviewing%20a%20hip%20X-ray.png",
         alt: "Surgeon reviewing a hip X-ray",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20working%20in%20a%20modern%20operating%20room.png",
         alt: "Surgical team working in a modern operating room",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
@@ -74,7 +74,7 @@ const ImageGallery: React.FC = () => {
     }, [selectedImage, nextImage, prevImage]);
 
     return (
-        <section id="gallery" className="py-20 bg-white" aria-labelledby="gallery-heading">
+        <section id="gallery" tabIndex={-1} className="py-20 bg-white focus:outline-none" aria-labelledby="gallery-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 id="gallery-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Surgical Outcomes Gallery</h2>

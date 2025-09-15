@@ -104,7 +104,7 @@ const AiAssistant: React.FC = () => {
     };
 
     return (
-        <section id="ai-assistant" className="py-20 bg-white" aria-labelledby="ai-assistant-heading">
+        <section id="ai-assistant" tabIndex={-1} className="py-20 bg-white focus:outline-none" aria-labelledby="ai-assistant-heading">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="ai-assistant-heading" className="text-3xl md:text-4xl font-bold text-gray-900">AI-Powered Symptom Assistant</h2>
@@ -115,7 +115,7 @@ const AiAssistant: React.FC = () => {
                     </p>
                 </div>
                 <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl flex flex-col" style={{height: '65vh'}}>
-                    <div ref={chatContainerRef} className="flex-1 p-6 space-y-4 overflow-y-auto">
+                    <div ref={chatContainerRef} className="flex-1 p-6 space-y-4 overflow-y-auto" aria-live="polite" aria-relevant="additions">
                         <div className="bg-red-50 border-l-4 border-red-400 text-red-800 p-4 rounded-r-lg mb-4 flex items-start gap-3" role="alert">
                              <div className="flex-shrink-0">
                                 <InformationCircleIcon className="h-6 w-6 text-red-500 mt-0.5" />
@@ -176,8 +176,10 @@ const AiAssistant: React.FC = () => {
                     </div>
                     <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 bg-gray-50 rounded-b-xl">
                         <div className="relative flex items-end gap-2">
+                            <label htmlFor="symptom-input" className="sr-only">Describe your symptoms</label>
                             <textarea
                                 ref={textareaRef}
+                                id="symptom-input"
                                 rows={1}
                                 value={userInput}
                                 onChange={(e) => setUserInput(e.target.value)}
