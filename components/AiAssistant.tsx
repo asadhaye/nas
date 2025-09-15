@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import type { Message } from '../types';
 import { getAiResponse } from '../services/geminiService';
-import { PaperAirplaneIcon, SparklesIcon, UserCircleIcon, InformationCircleIcon } from './icons';
+import { PaperAirplaneIcon, SparklesIcon, UserCircleIcon, InformationCircleIcon, AlertTriangleIcon } from './icons';
 
 
 const AiAssistant: React.FC = () => {
@@ -108,7 +108,7 @@ const AiAssistant: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="ai-assistant-heading" className="text-3xl md:text-4xl font-bold text-gray-900">AI-Powered Symptom Assistant</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Have a conversation with our AI assistant for a preliminary check of your symptoms.
                         <br />
                         <span className="font-semibold text-red-600">This is not a medical diagnosis. Always consult a qualified doctor.</span>
@@ -162,14 +162,16 @@ const AiAssistant: React.FC = () => {
                             </div>
                         )}
                         {error && (
-                            <div className="flex items-center justify-center gap-4 text-center p-2">
-                                <p className="text-red-500 text-sm">{error}</p>
+                            <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-lg text-center">
+                                <AlertTriangleIcon className="h-10 w-10 text-red-500 mx-auto mb-3" />
+                                <p className="font-semibold">Connection Error</p>
+                                <p className="text-sm mt-1 mb-4">{error}</p>
                                 <button
                                     onClick={retryLastRequest}
-                                    className="bg-blue-600 text-white font-semibold py-1 px-4 rounded-md hover:bg-blue-700 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                    className="bg-red-600 text-white font-semibold py-2 px-5 rounded-md hover:bg-red-700 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-500"
                                     aria-label="Retry failed request"
                                 >
-                                    Retry
+                                    Try Again
                                 </button>
                             </div>
                         )}

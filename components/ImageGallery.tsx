@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CameraIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
+import SafeImage from './SafeImage';
 
 const galleryData = [
     {
@@ -151,7 +152,7 @@ const ImageGallery: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 id="gallery-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Surgical Outcomes Gallery</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Visualizing the path to recovery and renewed mobility through successful patient outcomes.
                     </p>
                 </div>
@@ -166,21 +167,21 @@ const ImageGallery: React.FC = () => {
                                 className="group bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 text-left focus:outline-none focus:ring-4 focus:ring-blue-300"
                                 aria-label={`View details for ${item.title}`}
                             >
-                                <div className="relative">
-                                    <img 
+                                <div className="relative aspect-w-3 aspect-h-4">
+                                    <SafeImage 
                                         loading="lazy"
                                         src={`${baseUrl}${queryParams}&w=400`}
                                         srcSet={`${baseUrl}${queryParams}&w=400 400w, ${baseUrl}${queryParams}&w=800 800w`}
                                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         alt={item.alt} 
-                                        className="w-full h-56 object-cover" />
+                                        className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                                         <CameraIcon className="h-12 w-12 text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300" />
                                     </div>
                                 </div>
                                 <div className="p-5">
                                     <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                                    <p className="mt-1 text-gray-600 text-sm">{item.description}</p>
+                                    <p className="mt-1 text-gray-700 text-sm">{item.description}</p>
                                 </div>
                             </button>
                         )
@@ -216,7 +217,7 @@ const ImageGallery: React.FC = () => {
                             onTouchEnd={handleTouchEnd}
                         >
                             <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
-                                <img
+                                <SafeImage
                                      src={`${galleryData[selectedImage].src.split('?')[0]}?q=80&auto=format&fit=crop&w=1200`}
                                      alt={galleryData[selectedImage].alt}
                                      className="w-full h-auto max-h-[50vh] md:max-h-[90vh] object-contain"
@@ -231,7 +232,7 @@ const ImageGallery: React.FC = () => {
 
                             <div className="p-6 md:w-1/3 flex flex-col justify-center">
                                 <h3 id="gallery-modal-title" className="text-2xl font-bold text-gray-900">{galleryData[selectedImage].title}</h3>
-                                <p id="gallery-modal-description" className="mt-2 text-gray-600">{galleryData[selectedImage].description}</p>
+                                <p id="gallery-modal-description" className="mt-2 text-gray-700">{galleryData[selectedImage].description}</p>
                             </div>
 
                             <button onClick={closeModal} className="absolute top-2 right-2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close gallery view">

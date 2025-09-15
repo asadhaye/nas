@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { MenuIcon, XIcon, PhoneIcon, MailIcon } from './icons';
+import { motion, AnimatePresence } from 'framer-motion';
+import SafeImage from './SafeImage';
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +56,7 @@ const Header: React.FC = () => {
             {/* Main navigation bar */}
             <div className="container mx-auto px-6 flex justify-between items-center h-16">
                 <a href="#" className="flex-shrink-0" onClick={(e) => handleScroll(e, '#hero')}>
-                    <img 
+                    <SafeImage 
                         src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
                         alt="Dr. Naveed Ali Shair Logo" 
                         className="h-16 w-auto" 
@@ -78,7 +80,7 @@ const Header: React.FC = () => {
                 <div className="md:hidden">
                     <button 
                         onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                        className="text-gray-600 hover:text-blue-600 p-2"
+                        className="text-gray-600 hover:text-blue-600 p-2 z-50 relative"
                         aria-controls="mobile-menu"
                         aria-expanded={isMenuOpen}
                     >
@@ -89,21 +91,39 @@ const Header: React.FC = () => {
             </div>
 
             {/* Mobile Menu Panel */}
-            {isMenuOpen && (
-                <div className="md:hidden bg-white border-t border-gray-200" id="mobile-menu">
-                    <nav>
-                        <ul className="flex flex-col">
-                             {navLinks.map((link) => (
-                                <li key={link.href}>
-                                    <a href={link.href} onClick={(e) => handleScroll(e, link.href)} className="block w-full text-center py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium border-b border-gray-100">
-                                        {link.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </div>
-            )}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <>
+                        <motion.div
+                            className="fixed inset-0 bg-black/40 z-30 md:hidden"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsMenuOpen(false)}
+                        />
+                         <motion.div 
+                            className="md:hidden bg-white border-t border-gray-200 absolute top-full left-0 right-0 z-40 shadow-lg" 
+                            id="mobile-menu"
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <nav>
+                                <ul className="flex flex-col">
+                                    {navLinks.map((link) => (
+                                        <li key={link.href}>
+                                            <a href={link.href} onClick={(e) => handleScroll(e, link.href)} className="block w-full text-center py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium border-b border-gray-100">
+                                                {link.label}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </header>
     );
 };

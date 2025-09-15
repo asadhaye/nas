@@ -28,7 +28,7 @@ const ConditionCard: React.FC<ConditionCardProps> = ({ icon: IconComponent, titl
                 <IconComponent className="h-8 w-8 text-blue-600" />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-            <p className="text-gray-600 text-sm flex-grow">{summary}</p>
+            <p className="text-gray-700 text-sm flex-grow">{summary}</p>
         </button>
     );
 };
@@ -74,7 +74,7 @@ const Conditions: React.FC = () => {
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 id="conditions-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Orthopedic Services & Specialties</h2>
-                        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                             Specializing in a range of advanced procedures to help you regain mobility and live pain-free.
                         </p>
                     </div>
@@ -93,7 +93,7 @@ const Conditions: React.FC = () => {
 
                     <div className="mt-24 text-center">
                         <h2 id="education-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Patient Education Resources</h2>
-                        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                             Explore these interactive resources to better understand your condition and treatment options.
                         </p>
                     </div>
@@ -163,7 +163,7 @@ const Conditions: React.FC = () => {
                                         {React.createElement(selectedCondition.icon, { className: "h-12 w-12 text-blue-600" })}
                                     </div>
                                 </div>
-                                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                                     {selectedCondition.details}
                                 </p>
                             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhoneIcon, MailIcon, LocationMarkerIcon, TwitterIcon, FacebookIcon, LinkedInIcon, InstagramIcon } from './icons';
+import SafeImage from './SafeImage';
 
 const Footer: React.FC = () => {
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -25,7 +26,7 @@ const Footer: React.FC = () => {
                     {/* Column 1: Brand Info */}
                     <div className="md:col-span-2 lg:col-span-1">
                         <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="block mb-4">
-                            <img 
+                            <SafeImage 
                                 src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
                                 alt="Dr. Naveed Ali Shair Logo" 
                                 className="h-10 w-auto" 

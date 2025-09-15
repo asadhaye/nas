@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Get In Touch</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         To schedule an appointment, use the contact details or fill out the form below.
                     </p>
                 </div>
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
                     {/* Left Side: Info & Form */}
                     <div>
                         <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                        <div className="space-y-5 text-gray-600 mb-10">
+                        <div className="space-y-5 text-gray-700 mb-10">
                             <InfoItem icon={<LocationMarkerIcon className="h-6 w-6 text-blue-600" />} label="Address" value="Avenue Mall, Main Ghazi Rd, DHA, Lahore" />
                             <InfoItem icon={<PhoneIcon className="h-6 w-6 text-blue-600" />} label="Appointment" value="+92-321-97 28 977" href="tel:+923219728977" />
                             <InfoItem icon={<MailIcon className="h-6 w-6 text-blue-600" />} label="Email" value="dr.naveed@nasorthopedics.com" href="mailto:dr.naveed@nasorthopedics.com" />
@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
                             </div>
                     </div>
                     {/* Right Side: Map */}
-                    <div className="w-full min-h-[400px] lg:min-h-full rounded-lg overflow-hidden">
+                    <div className="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden min-h-[400px] lg:min-h-0">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.418888293608!2d74.4085726!3d31.485167999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919072594687f15%3A0xe4b85cbcbf71b34b!2sFarooq%20Hospital%20-%20DHA%20Avenue%20Mall!5e0!3m2!1sen!2s!4v1757895065408!5m2!1sen!2s"
                             width="100%" height="100%" style={{ border: 0 }}

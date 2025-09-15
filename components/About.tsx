@@ -1,5 +1,6 @@
 import React from 'react';
 import { AwardIcon, BookOpenIcon, UserIcon } from './icons';
+import SafeImage from './SafeImage';
 
 const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
     <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100">
@@ -9,7 +10,7 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
             </div>
             <div>
                 <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-                <p className="text-gray-600 mt-1 text-sm">{children}</p>
+                <p className="text-gray-700 mt-1 text-sm">{children}</p>
             </div>
         </div>
     </div>
@@ -26,7 +27,7 @@ const About: React.FC = () => {
                     {/* Main Profile Card */}
                     <div className="bg-white rounded-xl shadow-lg overflow-hidden md:flex">
                         <div className="md:w-1/3">
-                            <img 
+                            <SafeImage 
                                 loading="lazy"
                                 src={`${imageUrlBase}?w=400`}
                                 srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w`}
@@ -38,7 +39,7 @@ const About: React.FC = () => {
                         <div className="p-8 md:p-12 md:w-2/3">
                             <p className="text-sm font-semibold text-blue-600 tracking-wider uppercase">Meet Your Surgeon</p>
                             <h2 id="about-heading" className="text-3xl font-bold text-gray-900 mt-2">Dr. Naveed Ali Shair</h2>
-                            <p className="mt-4 text-gray-600 leading-relaxed">
+                            <p className="mt-4 text-gray-700 leading-relaxed">
                                 Dr. Shair is a distinguished Consultant Orthopedic, Trauma, and Joint Replacement Surgeon with a profound commitment to patient-centered care. Combining advanced surgical techniques with a compassionate approach, his mission is to restore mobility, alleviate pain, and significantly improve the quality of life for every patient he treats.
                             </p>
                         </div>

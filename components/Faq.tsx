@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { FaqItem } from '../types';
 import { PlusIcon, MinusIcon } from './icons';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,14 +22,25 @@ const faqData: FaqItem[] = [
     }
 ];
 
-const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () => void; index: number }> = ({ item, isOpen, onClick, index }) => {
+interface FaqItemComponentProps {
+    item: FaqItem;
+    isOpen: boolean;
+    onClick: () => void;
+    index: number;
+    setButtonRef: (el: HTMLButtonElement | null) => void;
+    onKeyDown: (e: React.KeyboardEvent, index: number) => void;
+}
+
+const FaqItemComponent: React.FC<FaqItemComponentProps> = ({ item, isOpen, onClick, index, setButtonRef, onKeyDown }) => {
     const panelId = `faq-panel-${index}`;
     const headingId = `faq-heading-${index}`;
 
     return (
         <div className="border-b border-gray-200">
             <button
+                ref={setButtonRef}
                 onClick={onClick}
+                onKeyDown={(e) => onKeyDown(e, index)}
                 className="w-full flex justify-between items-center text-left py-6 px-4 rounded-lg group hover:bg-gray-50 transition-colors focus:outline-none"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
@@ -56,7 +67,7 @@ const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () =
                         transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                     >
-                        <div className="pb-6 px-4 text-gray-600 prose-sm">
+                        <div className="pb-6 px-4 text-gray-700 prose-sm">
                             <p>{item.answer}</p>
                         </div>
                     </motion.div>
@@ -69,9 +80,26 @@ const FaqItemComponent: React.FC<{ item: FaqItem; isOpen: boolean; onClick: () =
 
 const Faq: React.FC = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+    useEffect(() => {
+        itemRefs.current = itemRefs.current.slice(0, faqData.length);
+    }, []);
 
     const handleClick = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
+    };
+    
+    const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = (index + 1) % faqData.length;
+            itemRefs.current[nextIndex]?.focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (index - 1 + faqData.length) % faqData.length;
+            itemRefs.current[prevIndex]?.focus();
+        }
     };
 
     return (
@@ -79,7 +107,7 @@ const Faq: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Answers to common questions from patients, inspired by communities like r/ACL.
                     </p>
                 </div>
@@ -91,6 +119,8 @@ const Faq: React.FC = () => {
                             index={index}
                             isOpen={openIndex === index}
                             onClick={() => handleClick(index)}
+                            setButtonRef={(el) => (itemRefs.current[index] = el)}
+                            onKeyDown={handleKeyDown}
                         />
                     ))}
                 </div>

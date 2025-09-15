@@ -40,7 +40,7 @@ const Testimonials: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-bold text-gray-900">Patient Success Stories</h2>
-                    <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
                         Hear from patients who have experienced our dedicated care firsthand.
                     </p>
                 </div>
@@ -48,7 +48,7 @@ const Testimonials: React.FC = () => {
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="bg-white p-8 rounded-lg shadow-lg flex flex-col text-center transform hover:-translate-y-2 transition-transform duration-300">
                             <QuoteIcon className="h-10 w-10 text-blue-300 mb-4 mx-auto" />
-                            <blockquote className="text-gray-600 italic flex-grow mb-6">
+                            <blockquote className="text-gray-700 italic flex-grow mb-6">
                                 "{testimonial.quote}"
                             </blockquote>
                             <footer className="mt-auto">

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
+import SafeImage from './SafeImage';
 
 const Hero: React.FC = () => {
     const appointmentButtonRef = useRef<HTMLButtonElement>(null);
@@ -97,7 +98,7 @@ const Hero: React.FC = () => {
                             delay: 0.5,
                         }}
                     >
-                        <img 
+                        <SafeImage 
                             fetchPriority="high"
                             src={`${imageUrlBase}?w=800`} 
                             srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w, ${imageUrlBase}?w=1200 1200w`}
