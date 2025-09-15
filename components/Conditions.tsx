@@ -1,17 +1,12 @@
 import React from 'react';
 import { conditionsData } from '../data/conditionsData';
 
-// FIX: Update ConditionCardProps to accept a React Functional Component for the icon,
-// rather than a React.ReactNode. This aligns with the change in `conditionsData.ts`
-// where we now pass the component itself to avoid JSX in a .ts file.
 interface ConditionCardProps {
     icon: React.FC<{ className?: string }>;
     title: string;
     summary: string;
 }
 
-// FIX: Destructure the icon prop and rename it to `IconComponent` for clarity.
-// Render it as a component, passing the required className for styling.
 const ConditionCard: React.FC<ConditionCardProps> = ({ icon: IconComponent, title, summary }) => {
     return (
         <div className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-teal-400">

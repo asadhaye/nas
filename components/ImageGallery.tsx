@@ -1,41 +1,41 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CameraIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
 
 const galleryData = [
     {
         src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20knee%20joint.png",
-        alt: "High-resolution X-ray of a knee joint",
+        alt: "Detailed X-ray of a human knee, used for advanced diagnostics to identify arthritis or injury.",
         title: "Advanced Knee Diagnostics",
         description: "Detailed imaging for precise diagnosis of knee conditions."
     },
     {
         src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Patient%20undergoing%20physical%20therapy.png",
-        alt: "Patient undergoing physical therapy for their leg",
+        alt: "Physical therapist guiding a male patient through leg rehabilitation exercises to restore mobility post-surgery.",
         title: "Guided Rehabilitation",
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20reviewing%20a%20hip%20X-ray.png",
-        alt: "Surgeon reviewing a hip X-ray",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
+        alt: "Dr. Sher meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20working%20in%20a%20modern%20operating%20room.png",
-        alt: "Surgical team working in a modern operating room",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
+        alt: "Dr. Sher and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
     },
     {
         src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
-        alt: "Doctor discussing results with a patient",
+        alt: "Dr. Sher in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
         title: "Empathetic Patient Care",
         description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
     {
         src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/%20X-ray%20of%20a%20human%20spine.png",
-        alt: "X-ray of a human spine",
+        alt: "Clear X-ray of the lumbar spine, used for diagnosing complex spinal conditions and trauma.",
         title: "Complex Spine & Trauma",
         description: "Expert care for complex trauma and spinal conditions."
     }
@@ -44,8 +44,14 @@ const galleryData = [
 
 const ImageGallery: React.FC = () => {
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
+    const triggerElementRef = useRef<HTMLElement | null>(null);
+    const modalRef = useRef<HTMLDivElement>(null);
 
-    const openModal = (index: number) => setSelectedImage(index);
+    const openModal = (index: number) => {
+        triggerElementRef.current = document.activeElement as HTMLElement;
+        setSelectedImage(index);
+    };
+    
     const closeModal = () => setSelectedImage(null);
 
     const nextImage = useCallback(() => {
@@ -61,16 +67,47 @@ const ImageGallery: React.FC = () => {
     }, [selectedImage]);
 
     useEffect(() => {
+        if (selectedImage === null) {
+            triggerElementRef.current?.focus();
+            return;
+        }
+
+        const modalNode = modalRef.current;
+        if (!modalNode) return;
+
+        const focusableElements = modalNode.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        
+        const closeButton = modalNode.querySelector<HTMLElement>('[aria-label="Close gallery view"]');
+        (closeButton || focusableElements[0])?.focus();
+        
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (selectedImage !== null) {
-                if (e.key === 'Escape') closeModal();
-                if (e.key === 'ArrowRight') nextImage();
-                if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+
+            if (e.key === 'Tab') {
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
+
     }, [selectedImage, nextImage, prevImage]);
 
     return (
@@ -130,6 +167,7 @@ const ImageGallery: React.FC = () => {
                         aria-describedby="gallery-modal-description"
                     >
                         <motion.div 
+                            ref={modalRef}
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, y: 20 }}

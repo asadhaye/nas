@@ -5,32 +5,32 @@ const testimonials = [
     {
         quote: "Dr. Naveed is a brilliant and competent surgeon. He is not only an expert in his field but also a very humble person. He performed my mother's knee surgery and it went quite well.",
         name: "Waleed Ilyas",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/male-1.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-1.png",
     },
     {
         quote: "Dr. Naveed Ali Sher is one of the best orthopedic surgeon in Lahore. He is very competent, professional and a cooperative doctor. He did my ACL Reconstruction surgery and it went very well. Highly recommended.",
         name: "Amna Aslam",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/female-1.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/female-1.png",
     },
     {
         quote: "Dr. Naveed is a fantastic orthopedic surgeon. My brother had a road traffic accident and his leg was badly fractured, Dr. Naveed operated him and now he is absolutely fine. Very skillful and competent surgeon.",
         name: "Saad Kazmi",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/male-2.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-2.png",
     },
     {
         quote: "Very competent and highly professional Orthopedic surgeon. I had a wonderful experience and will recommend to all my friends and family.",
         name: "Zainab Khan",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/female-2.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/female-2.png",
     },
     {
         quote: "One of the best Doctor in Lahore. I must say He's very humble and down to earth. His way of treating the patient is remarkable.",
         name: "Farooq Ahmed",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/male-3.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-3.png",
     },
     {
         quote: "Best Orthopedic Surgeon in Lahore. Highly recommended.",
         name: "Ali Raza",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/testimonials/male-4.png",
+        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-4.png",
     },
 ];
 

@@ -17,7 +17,7 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
 
 
 const About: React.FC = () => {
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Portrait.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Portrait.png";
     
     return (
         <section id="about" tabIndex={-1} className="py-20 bg-sky-50 focus:outline-none" aria-labelledby="about-heading">

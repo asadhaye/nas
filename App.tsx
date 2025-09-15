@@ -9,6 +9,7 @@ import Faq from './components/Faq';
 import AiAssistant from './components/AiAssistant';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
 // import metadata from './metadata.json';
 import { conditionsData } from './data/conditionsData';
 
@@ -26,7 +27,7 @@ const App: React.FC = () => {
         // Update meta keywords
         const keywordsTag = document.querySelector('meta[name="keywords"]');
         if (keywordsTag) {
-            const baseKeywords = "Orthopedic Surgeon Lahore, Dr. Naveed Ali Shair, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA";
+            const baseKeywords = "Orthopedic Surgeon Lahore, Dr. Naveed Ali Sher, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA";
             const dynamicKeywords = conditionsData.map(c => c.title).join(', ');
             keywordsTag.setAttribute('content', `${`${baseKeywords}, ${dynamicKeywords}`}`);
         }
@@ -40,9 +41,19 @@ const App: React.FC = () => {
                 <About />
                 <Conditions />
                 <Testimonials />
-                <ImageGallery />
+                <ErrorBoundary
+                    sectionId="gallery"
+                    fallbackMessage="The image gallery could not be loaded at this moment. Please try again."
+                >
+                    <ImageGallery />
+                </ErrorBoundary>
                 <Faq />
-                <AiAssistant />
+                <ErrorBoundary
+                    sectionId="ai-assistant"
+                    fallbackMessage="The AI assistant is currently unavailable due to a technical issue."
+                >
+                    <AiAssistant />
+                </ErrorBoundary>
                 <Contact />
             </main>
             <Footer />

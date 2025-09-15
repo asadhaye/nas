@@ -1,5 +1,4 @@
 import React from 'react';
-// FIX: Import Variants from framer-motion to explicitly type animation variants.
 import { motion, Variants } from 'framer-motion';
 
 const Hero: React.FC = () => {
@@ -11,32 +10,33 @@ const Hero: React.FC = () => {
         }
     };
 
-    // FIX: Add explicit Variants type to help TypeScript correctly infer the object structure.
+    // Updated for a more orchestrated sequence
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1,
+                staggerChildren: 0.15,
+                delayChildren: 0.2,
             },
         },
     };
 
-    // FIX: Add explicit Variants type to resolve the type error where the 'ease' property was being inferred as a generic string.
+    // Updated to use a spring animation for a more dynamic feel
     const itemVariants: Variants = {
-        hidden: { y: 20, opacity: 0 },
+        hidden: { y: 40, opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 0.5,
-                ease: "easeOut",
+                type: "spring",
+                damping: 15,
+                stiffness: 120,
             },
         },
     };
     
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Headshot.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
 
     return (
         <section id="hero" tabIndex={-1} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white focus:outline-none" aria-labelledby="hero-heading">
@@ -80,12 +80,16 @@ const Hero: React.FC = () => {
                     {/* Image Content */}
                     <motion.div 
                         className="flex justify-center items-center"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{
+                            type: "spring",
+                            damping: 20,
+                            stiffness: 80,
+                            delay: 0.5,
+                        }}
                     >
                         <img 
-                            // FIX: Corrected typo from `fetchpriority` to `fetchPriority` to match React's expected property name.
                             fetchPriority="high"
                             src={`${imageUrlBase}&w=800`} 
                             srcSet={`${imageUrlBase}&w=400 400w, ${imageUrlBase}&w=800 800w, ${imageUrlBase}&w=1200 1200w`}
