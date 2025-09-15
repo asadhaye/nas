@@ -34,7 +34,7 @@ const galleryData = [
         description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20human%20spine.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/%20X-ray%20of%20a%20human%20spine.png",
         alt: "Clear X-ray of the lumbar spine, used for diagnosing complex spinal conditions and trauma.",
         title: "Complex Spine & Trauma",
         description: "Expert care for complex trauma and spinal conditions."

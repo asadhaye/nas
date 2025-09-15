@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                     {/* FIX: Corrected undefined function call to get the current year. */}
                     <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Shair. All Rights Reserved. This website is for informational purposes only.</p>
                     <p className="mt-2">
-                        Made with <span className="text-red-500">&hearts;</span> by <a href="https://www.asadhaye.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-300 hover:text-white transition-colors">Asad Haye</a>
+                        Made with <span className="text-red-500">&hearts;</span> by <a href="https://www.asadhaye.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-300 hover:text-white transition-colors">Muhammad Asad Haye</a>
                     </p>
                 </div>
             </div>
