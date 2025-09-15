@@ -4,37 +4,37 @@ import { CameraIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
 
 const galleryData = [
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/X-ray%20of%20a%20knee%20joint.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20knee%20joint.png",
         alt: "Detailed X-ray of a human knee, used for advanced diagnostics to identify arthritis or injury.",
         title: "Advanced Knee Diagnostics",
         description: "Detailed imaging for precise diagnosis of knee conditions."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Patient%20undergoing%20physical%20therapy.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Patient%20undergoing%20physical%20therapy.png",
         alt: "Physical therapist guiding a male patient through leg rehabilitation exercises to restore mobility post-surgery.",
         title: "Guided Rehabilitation",
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
-        alt: "Dr. Sher meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
+        alt: "Dr. Shair meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
-        alt: "Dr. Sher and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
+        alt: "Dr. Shair and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
-        alt: "Dr. Sher in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
+        alt: "Dr. Shair in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
         title: "Empathetic Patient Care",
         description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/X-ray%20of%20a%20human%20spine.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20human%20spine.png",
         alt: "Clear X-ray of the lumbar spine, used for diagnosing complex spinal conditions and trauma.",
         title: "Complex Spine & Trauma",
         description: "Expert care for complex trauma and spinal conditions."

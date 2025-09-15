@@ -5,34 +5,34 @@ const testimonials = [
     {
         quote: "Dr. Naveed is a brilliant and competent surgeon. He is not only an expert in his field but also a very humble person. He performed my mother's knee surgery and it went quite well.",
         name: "Waleed Ilyas",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-1.png",
     },
     {
-        quote: "Dr. Naveed Ali Sher is one of the best orthopedic surgeon in Lahore. He is very competent, professional and a cooperative doctor. He did my ACL Reconstruction surgery and it went very well. Highly recommended.",
+        quote: "Dr. Naveed Ali Shair is one of the best orthopedic surgeon in Lahore. He is very competent, professional and a cooperative doctor. He did my ACL Reconstruction surgery and it went very well. Highly recommended.",
         name: "Amna Aslam",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/female-1.png",
     },
     {
         quote: "Dr. Naveed is a fantastic orthopedic surgeon. My brother had a road traffic accident and his leg was badly fractured, Dr. Naveed operated him and now he is absolutely fine. Very skillful and competent surgeon.",
         name: "Saad Kazmi",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-2.png",
     },
     {
         quote: "Very competent and highly professional Orthopedic surgeon. I had a wonderful experience and will recommend to all my friends and family.",
         name: "Zainab Khan",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/female-2.png",
     },
     {
         quote: "One of the best Doctor in Lahore. I must say He's very humble and down to earth. His way of treating the patient is remarkable.",
         name: "Farooq Ahmed",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-3.png",
     },
     {
         quote: "Best Orthopedic Surgeon in Lahore. Highly recommended.",
         name: "Ali Raza",
-        imageUrl: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/Testimonials/male-4.png",
     },
 ];
+
+const getInitials = (name: string): string => {
+    const names = name.split(' ');
+    if (names.length === 1) return names[0][0]?.toUpperCase() || '';
+    return `${names[0][0]}${names[names.length - 1][0]}`.toUpperCase();
+};
 
 const Testimonials: React.FC = () => {
     return (
@@ -52,12 +52,11 @@ const Testimonials: React.FC = () => {
                                 "{testimonial.quote}"
                             </blockquote>
                             <footer className="mt-auto">
-                                <img 
-                                    loading="lazy"
-                                    src={testimonial.imageUrl} 
-                                    alt={`Photo of ${testimonial.name}`}
-                                    className="w-16 h-16 rounded-full mx-auto mb-4 border-4 border-blue-100 shadow-md"
-                                />
+                                <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-blue-100 flex items-center justify-center border-4 border-white shadow-md">
+                                    <span className="text-2xl font-bold text-blue-600" aria-hidden="true">
+                                        {getInitials(testimonial.name)}
+                                    </span>
+                                </div>
                                 <p className="font-semibold text-gray-800">{testimonial.name}</p>
                             </footer>
                         </div>
