@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
 
 const Hero: React.FC = () => {
+    const appointmentButtonRef = useRef<HTMLButtonElement>(null);
+
     const handleScrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const targetElement = document.querySelector('#contact');
@@ -36,7 +38,11 @@ const Hero: React.FC = () => {
         },
     };
     
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Dr%20Shair%20Headshot.png";
+    
+    const focusButtonAfterAnimation = () => {
+        appointmentButtonRef.current?.focus({ preventScroll: true });
+    };
 
     return (
         <section id="hero" tabIndex={-1} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 to-teal-500 text-white focus:outline-none" aria-labelledby="hero-heading">
@@ -52,6 +58,7 @@ const Hero: React.FC = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
+                        onAnimationComplete={focusButtonAfterAnimation}
                     >
                         <motion.p variants={itemVariants} className="text-lg md:text-xl text-white/90 font-medium tracking-wider" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.3)' }}>
                             Consultant Orthopedic, Trauma & Joint Replacement Surgeon
@@ -69,6 +76,7 @@ const Hero: React.FC = () => {
                         </motion.p>
                         <motion.div variants={itemVariants} className="mt-10">
                             <button 
+                                ref={appointmentButtonRef}
                                 onClick={handleScrollToContact} 
                                 className="bg-white text-blue-600 font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-400/40 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
                             >

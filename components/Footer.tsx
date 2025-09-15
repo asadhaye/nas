@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                     <div className="md:col-span-2 lg:col-span-1">
                         <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="block mb-4">
                             <img 
-                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
+                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/nas-logo-1.png" 
                                 alt="Dr. Naveed Ali Sher Logo" 
                                 className="h-10 w-auto" 
                             />
@@ -72,6 +72,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="bg-slate-800 py-4">
                 <div className="container mx-auto px-6 text-center text-sm text-gray-400">
+                    {/* FIX: Corrected undefined function call to get the current year. */}
                     <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Sher. All Rights Reserved. This website is for informational purposes only.</p>
                     <p className="mt-2">
                         Made with <span className="text-red-500">&hearts;</span> by <a href="https://www.asadhaye.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-300 hover:text-white transition-colors">Asad Haye</a>

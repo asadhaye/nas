@@ -55,7 +55,7 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-6 flex justify-between items-center h-16">
                 <a href="#" className="flex-shrink-0" onClick={(e) => handleScroll(e, '#hero')}>
                     <img 
-                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
+                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/nas-logo-1.png" 
                         alt="Dr. Naveed Ali Sher Logo" 
                         className="h-12 w-auto" 
                     />

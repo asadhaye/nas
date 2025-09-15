@@ -4,37 +4,37 @@ import { CameraIcon, XIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
 
 const galleryData = [
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/X-ray%20of%20a%20knee%20joint.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/X-ray%20of%20a%20knee%20joint.png",
         alt: "Detailed X-ray of a human knee, used for advanced diagnostics to identify arthritis or injury.",
         title: "Advanced Knee Diagnostics",
         description: "Detailed imaging for precise diagnosis of knee conditions."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Patient%20undergoing%20physical%20therapy.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Patient%20undergoing%20physical%20therapy.png",
         alt: "Physical therapist guiding a male patient through leg rehabilitation exercises to restore mobility post-surgery.",
         title: "Guided Rehabilitation",
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
         alt: "Dr. Sher meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
         alt: "Dr. Sher and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
         alt: "Dr. Sher in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
         title: "Empathetic Patient Care",
         description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/%20X-ray%20of%20a%20human%20spine.png",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI-Images/X-ray%20of%20a%20human%20spine.png",
         alt: "Clear X-ray of the lumbar spine, used for diagnosing complex spinal conditions and trauma.",
         title: "Complex Spine & Trauma",
         description: "Expert care for complex trauma and spinal conditions."
@@ -45,7 +45,8 @@ const galleryData = [
 const ImageGallery: React.FC = () => {
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
     const triggerElementRef = useRef<HTMLElement | null>(null);
-    const modalRef = useRef<HTMLDivElement>(null);
+    const modalRef = useRef<HTMLDivElement | null>(null);
+    const touchStartXRef = useRef<number | null>(null);
 
     const openModal = (index: number) => {
         triggerElementRef.current = document.activeElement as HTMLElement;
@@ -75,12 +76,16 @@ const ImageGallery: React.FC = () => {
         const modalNode = modalRef.current;
         if (!modalNode) return;
 
-        const focusableElements = modalNode.querySelectorAll<HTMLElement>(
+        const focusableElements = Array.from(modalNode.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
+        ));
         
-        const closeButton = modalNode.querySelector<HTMLElement>('[aria-label="Close gallery view"]');
-        (closeButton || focusableElements[0])?.focus();
+        if (focusableElements.length > 0) {
+            const closeButton = focusableElements.find(el => el.getAttribute('aria-label') === 'Close gallery view');
+            (closeButton || focusableElements[0])?.focus();
+        } else {
+            modalNode.focus();
+        }
         
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') closeModal();
@@ -88,16 +93,22 @@ const ImageGallery: React.FC = () => {
             if (e.key === 'ArrowLeft') prevImage();
 
             if (e.key === 'Tab') {
+                if (focusableElements.length <= 1) {
+                    e.preventDefault();
+                    return;
+                }
+                
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
+                const currentIndex = focusableElements.indexOf(document.activeElement as HTMLElement);
 
-                if (e.shiftKey) { // Shift + Tab
-                    if (document.activeElement === firstElement) {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement || currentIndex === -1) {
                         lastElement.focus();
                         e.preventDefault();
                     }
-                } else { // Tab
-                    if (document.activeElement === lastElement) {
+                } else {
+                    if (document.activeElement === lastElement || currentIndex === -1) {
                         firstElement.focus();
                         e.preventDefault();
                     }
@@ -109,6 +120,31 @@ const ImageGallery: React.FC = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
 
     }, [selectedImage, nextImage, prevImage]);
+    
+    // Touch gesture handlers
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartXRef.current = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (touchStartXRef.current === null) return;
+
+        const currentX = e.touches[0].clientX;
+        const deltaX = touchStartXRef.current - currentX;
+        const swipeThreshold = 50; // Minimum distance for a swipe
+
+        if (deltaX > swipeThreshold) {
+            nextImage();
+            touchStartXRef.current = null; // Reset after swipe
+        } else if (deltaX < -swipeThreshold) {
+            prevImage();
+            touchStartXRef.current = null; // Reset after swipe
+        }
+    };
+    
+    const handleTouchEnd = () => {
+        touchStartXRef.current = null; // Reset on finger lift
+    };
 
     return (
         <section id="gallery" tabIndex={-1} className="py-20 bg-white focus:outline-none" aria-labelledby="gallery-heading">
@@ -168,12 +204,16 @@ const ImageGallery: React.FC = () => {
                     >
                         <motion.div 
                             ref={modalRef}
+                            tabIndex={-1}
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, y: 20 }}
                             transition={{ duration: 0.2 }}
-                            className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden"
+                            className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden focus:outline-none"
                             onClick={(e) => e.stopPropagation()}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
                         >
                             <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
                                 <img
