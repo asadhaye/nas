@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-const { GoogleGenAI } = require("@google/genai");
+// FIX: Changed require to import to use ES module syntax.
+import { GoogleGenAI } from "@google/genai";
 
 interface Message {
     id: number;
@@ -40,7 +41,8 @@ const systemInstruction = `You are an empathetic and professional AI assistant f
 Maintain a concise, empathetic, and easy-to-understand tone throughout the interaction.`;
 
 
-module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
+// FIX: Changed module.exports to export default to use ES module syntax.
+export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
