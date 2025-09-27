@@ -13,6 +13,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { conditionsData } from './data/conditionsData';
 import AnimatedSection from './components/AnimatedSection';
 import SectionDivider from './components/SectionDivider';
+import InstallPwaButton from './components/InstallPwaButton';
 
 const App: React.FC = () => {
     useEffect(() => {
@@ -68,6 +69,7 @@ const App: React.FC = () => {
                 </AnimatedSection>
             </main>
             <Footer />
+            <InstallPwaButton />
         </div>
     );
 };
