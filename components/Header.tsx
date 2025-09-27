@@ -58,7 +58,7 @@ const Header: React.FC = () => {
                 <a href="#" className="flex-shrink-0 font-heading" onClick={(e) => handleScroll(e, '#hero')}>
                     <SafeImage 
                         fetchPriority="high"
-                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png?w=256&q=90" 
+                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
                         alt="Dr. Naveed Ali Sher Logo" 
                         className="h-16 w-auto" 
                     />

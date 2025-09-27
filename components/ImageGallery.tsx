@@ -77,7 +77,6 @@ const ImageGallery: React.FC = () => {
         const modalNode = modalRef.current;
         if (!modalNode) return;
 
-        // FIX: Explicitly type querySelectorAll result as HTMLElement to ensure access to .focus() and .getAttribute().
         const focusableElements = Array.from(modalNode.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         ));
@@ -159,7 +158,6 @@ const ImageGallery: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {galleryData.map((item, index) => {
                         const baseUrl = item.src.split('?')[0];
-                        const queryParams = "?q=80&auto=format&fit=crop";
                         return (
                              <button
                                 key={index}
@@ -170,9 +168,7 @@ const ImageGallery: React.FC = () => {
                                 <div className="relative aspect-w-3 aspect-h-4 overflow-hidden">
                                     <SafeImage 
                                         loading="lazy"
-                                        src={`${baseUrl}${queryParams}&w=400`}
-                                        srcSet={`${baseUrl}${queryParams}&w=400 400w, ${baseUrl}${queryParams}&w=800 800w`}
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        src={baseUrl}
                                         alt={item.alt} 
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
                                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
@@ -194,7 +190,6 @@ const ImageGallery: React.FC = () => {
                     (() => {
                         const currentImage = galleryData[selectedImage];
                         const baseUrl = currentImage.src.split('?')[0];
-                        const queryParams = "?q=80&auto=format&fit=crop";
 
                         return (
                             <motion.div
@@ -224,9 +219,7 @@ const ImageGallery: React.FC = () => {
                                 >
                                     <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
                                         <SafeImage
-                                            src={`${baseUrl}${queryParams}&w=800`}
-                                            srcSet={`${baseUrl}${queryParams}&w=400 400w, ${baseUrl}${queryParams}&w=800 800w, ${baseUrl}${queryParams}&w=1200 1200w`}
-                                            sizes="(max-width: 767px) 90vw, 66vw"
+                                            src={baseUrl}
                                             alt={currentImage.alt}
                                             className="w-full h-auto max-h-[50vh] md:max-h-[90vh] object-contain"
                                         />

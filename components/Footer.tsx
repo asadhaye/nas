@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                         <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="block mb-4">
                             <SafeImage 
                                 loading="lazy"
-                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png?w=200&q=90" 
+                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
                                 alt="Dr. Naveed Ali Sher Logo" 
                                 className="h-10 w-auto" 
                             />

@@ -55,8 +55,17 @@ const Hero: React.FC = () => {
         },
     };
     
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Headshot.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
     
+    // Create responsive image sources using an image proxy service
+    const imageProxyPrefix = 'https://images.weserv.nl/?url=';
+    const strippedUrl = imageUrlBase.replace(/^https?:\/\//, '');
+    const headshotSrcSet = [400, 600, 800, 1000]
+        .map(w => `${imageProxyPrefix}${strippedUrl}&w=${w}&h=${w}&fit=cover&q=85&output=webp ${w}w`)
+        .join(', ');
+    const headshotSizes = "(min-width: 768px) 448px, (min-width: 480px) 384px, 80vw";
+
+
     const focusButtonAfterAnimation = () => {
         appointmentButtonRef.current?.focus({ preventScroll: true });
     };
@@ -116,10 +125,10 @@ const Hero: React.FC = () => {
                     >
                         <SafeImage 
                             fetchPriority="high"
-                            src={`${imageUrlBase}?w=800`} 
-                            srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w, ${imageUrlBase}?w=1200 1200w`}
-                            sizes="(max-width: 767px) 80vw, 50vw"
-                            alt="Professional portrait of Dr. Naveed Ali Sher" 
+                            src={imageUrlBase} 
+                            srcSet={headshotSrcSet}
+                            sizes={headshotSizes}
+                            alt="Professional headshot of Dr. Naveed Ali Sher" 
                             className="w-4/5 max-w-sm md:w-full md:max-w-md aspect-square rounded-full object-cover object-top shadow-2xl border-8 border-white/20"
                         />
                     </motion.div>

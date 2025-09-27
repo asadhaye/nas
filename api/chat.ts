@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-// FIX: Changed require to import to use ES module syntax.
 import { GoogleGenAI } from "@google/genai";
 
 interface Message {
@@ -27,7 +26,7 @@ const systemInstruction = `You are an empathetic and professional AI assistant f
     *   **Sequence:**
         1.  First, ask about **Pain Intensity:** "On a scale of 1 to 10, with 1 being very mild and 10 being the worst imaginable, how would you rate your pain?"
         2.  After they answer, ask about **Symptom Duration:** "And how long have you been experiencing these symptoms?"
-        3.  After they answer, ask about **Aggravating/Relieving Factors:** "Is there anything you've noticed that makes the pain feel better or worse?"
+        3.  After they answer, ask about **Aggravating/Relieving Factors:** "Is there anything you'venoticed that makes the pain feel better or worse?"
         4.  After they answer, ask about **Location:** "Can you point to the specific location of the pain or discomfort?"
         5.  Finally, after they answer, ask about the **Nature of Onset:** "Did the symptoms start suddenly after an injury, or did they come on more gradually over time?"
 
@@ -41,7 +40,6 @@ const systemInstruction = `You are an empathetic and professional AI assistant f
 Maintain a concise, empathetic, and easy-to-understand tone throughout the interaction.`;
 
 
-// FIX: Changed module.exports to export default to use ES module syntax.
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });

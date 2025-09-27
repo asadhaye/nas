@@ -18,8 +18,16 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
 
 
 const About: React.FC = () => {
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Portrait.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Portrait.png";
     
+    // Create responsive image sources using an image proxy service
+    const imageProxyPrefix = 'https://images.weserv.nl/?url=';
+    const strippedUrl = imageUrlBase.replace(/^https?:\/\//, '');
+    const portraitSrcSet = [400, 600, 800, 1000]
+        .map(w => `${imageProxyPrefix}${strippedUrl}&w=${w}&q=85&output=webp ${w}w`)
+        .join(', ');
+    const portraitSizes = "(min-width: 1024px) 341px, (min-width: 768px) 33vw, 100vw";
+
     return (
         <section id="about" tabIndex={-1} className="py-24 bg-white focus:outline-none" aria-labelledby="about-heading">
             <div className="container mx-auto px-6">
@@ -29,10 +37,10 @@ const About: React.FC = () => {
                         <div className="md:w-1/3">
                             <SafeImage 
                                 loading="lazy"
-                                src={`${imageUrlBase}?w=400`}
-                                srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w`}
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                                alt="Dr. Sher professional headshot" 
+                                src={imageUrlBase}
+                                srcSet={portraitSrcSet}
+                                sizes={portraitSizes}
+                                alt="Dr. Sher professional portrait" 
                                 className="h-64 w-full object-cover md:h-full"
                             />
                         </div>
