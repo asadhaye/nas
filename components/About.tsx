@@ -18,7 +18,7 @@ const CredentialCard: React.FC<{ icon: React.ReactNode; title: string; children:
 
 
 const About: React.FC = () => {
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Portrait.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Portrait.png";
     
     return (
         <section id="about" tabIndex={-1} className="py-24 bg-white focus:outline-none" aria-labelledby="about-heading">
@@ -32,15 +32,15 @@ const About: React.FC = () => {
                                 src={`${imageUrlBase}?w=400`}
                                 srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w`}
                                 sizes="(max-width: 768px) 100vw, 33vw"
-                                alt="Dr. Shair professional headshot" 
+                                alt="Dr. Sher professional headshot" 
                                 className="h-64 w-full object-cover md:h-full"
                             />
                         </div>
                         <div className="p-8 md:p-12 md:w-2/3">
                             <p className="text-sm font-semibold text-blue-600 tracking-wider uppercase">Meet Your Surgeon</p>
-                            <h2 id="about-heading" className="text-4xl font-bold text-gray-900 mt-2 font-heading">Dr. Naveed Ali Shair</h2>
+                            <h2 id="about-heading" className="text-4xl font-bold text-gray-900 mt-2 font-heading">Dr. Naveed Ali Sher</h2>
                             <p className="mt-4 text-gray-700 leading-relaxed">
-                                Dr. Shair is a distinguished Consultant Orthopedic, Trauma, and Joint Replacement Surgeon with a profound commitment to patient-centered care. Combining advanced surgical techniques with a compassionate approach, his mission is to restore mobility, alleviate pain, and significantly improve the quality of life for every patient he treats.
+                                Dr. Sher is a distinguished Consultant Orthopedic, Trauma, and Joint Replacement Surgeon with a profound commitment to patient-centered care. Combining advanced surgical techniques with a compassionate approach, his mission is to restore mobility, alleviate pain, and significantly improve the quality of life for every patient he treats.
                             </p>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const About: React.FC = () => {
                     {/* Credentials Grid */}
                     <div className="grid md:grid-cols-3 gap-6 mt-10">
                          <CredentialCard icon={<AwardIcon className="h-6 w-6" />} title="Expert Qualifications">
-                            Holding an MBBS and FCPS in Orthopedic Surgery, Dr. Shair has enriched his expertise with prestigious international fellowships in Germany (SICOT) and Switzerland (AO).
+                            Holding an MBBS and FCPS in Orthopedic Surgery, Dr. Sher has enriched his expertise with prestigious international fellowships in Germany (SICOT) and Switzerland (AO).
                         </CredentialCard>
                         <CredentialCard icon={<BookOpenIcon className="h-6 w-6" />} title="Areas of Special Interest">
                             Specializing in Primary & Revision Hip & Knee Arthroplasty, Arthroscopic Knee Surgery (ACL/PCL/Meniscus), and Complex Periarticular Trauma.

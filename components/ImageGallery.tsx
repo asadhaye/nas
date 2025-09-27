@@ -17,20 +17,20 @@ const galleryData = [
         description: "Personalized physical therapy programs to ensure a swift recovery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20reviewing%20a%20hip%20X-ray.png",
-        alt: "Dr. Shair meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20reviewing%20a%20hip%20X-ray.png",
+        alt: "Dr. Sher meticulously reviewing a hip X-ray, demonstrating the pre-operative planning process for surgical precision.",
         title: "Surgical Precision",
         description: "Meticulous pre-operative planning for hip replacement surgery."
     },
     {
-        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20working%20in%20a%20modern%20operating%20room.png",
-        alt: "Dr. Shair and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
+        src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20working%20in%20a%20modern%20operating%20room.png",
+        alt: "Dr. Sher and his surgical team performing a procedure in a state-of-the-art operating room, highlighting their focus on modern techniques.",
         title: "State-of-the-Art Procedures",
         description: "Utilizing the latest technology in a sterile surgical environment."
     },
     {
         src: "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Generated%20Image%20September%2011%2C%202025%20-%206_42AM.png",
-        alt: "Dr. Shair in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
+        alt: "Dr. Sher in a consultation, empathetically explaining a treatment plan to a patient and their partner using a tablet.",
         title: "Empathetic Patient Care",
         description: "Ensuring patients are informed and comfortable with their treatment plan."
     },
@@ -77,6 +77,7 @@ const ImageGallery: React.FC = () => {
         const modalNode = modalRef.current;
         if (!modalNode) return;
 
+        // FIX: Explicitly type querySelectorAll result as HTMLElement to ensure access to .focus() and .getAttribute().
         const focusableElements = Array.from(modalNode.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         ));
@@ -189,57 +190,67 @@ const ImageGallery: React.FC = () => {
             </div>
 
             <AnimatePresence>
-                {selectedImage !== null && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
-                        onClick={closeModal}
-                        role="dialog"
-                        aria-modal="true"
-                        aria-labelledby="gallery-modal-title"
-                        aria-describedby="gallery-modal-description"
-                    >
-                        <motion.div 
-                            ref={modalRef}
-                            tabIndex={-1}
-                            initial={{ scale: 0.9, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            transition={{ duration: 0.2 }}
-                            className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden focus:outline-none"
-                            onClick={(e) => e.stopPropagation()}
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                        >
-                            <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
-                                <SafeImage
-                                     src={`${galleryData[selectedImage].src.split('?')[0]}?q=80&auto=format&fit=crop&w=1200`}
-                                     alt={galleryData[selectedImage].alt}
-                                     className="w-full h-auto max-h-[50vh] md:max-h-[90vh] object-contain"
-                                />
-                                <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Previous image">
-                                    <ChevronLeftIcon className="h-6 w-6" />
-                                </button>
-                                <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Next image">
-                                    <ChevronRightIcon className="h-6 w-6" />
-                                </button>
-                            </div>
+                {selectedImage !== null &&
+                    (() => {
+                        const currentImage = galleryData[selectedImage];
+                        const baseUrl = currentImage.src.split('?')[0];
+                        const queryParams = "?q=80&auto=format&fit=crop";
 
-                            <div className="p-6 md:w-1/3 flex flex-col justify-center">
-                                <h3 id="gallery-modal-title" className="text-2xl font-bold text-gray-900 font-heading">{galleryData[selectedImage].title}</h3>
-                                <p id="gallery-modal-description" className="mt-2 text-gray-700">{galleryData[selectedImage].description}</p>
-                            </div>
+                        return (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+                                onClick={closeModal}
+                                role="dialog"
+                                aria-modal="true"
+                                aria-labelledby="gallery-modal-title"
+                                aria-describedby="gallery-modal-description"
+                            >
+                                <motion.div
+                                    ref={modalRef}
+                                    tabIndex={-1}
+                                    initial={{ scale: 0.9, y: 20 }}
+                                    animate={{ scale: 1, y: 0 }}
+                                    exit={{ scale: 0.9, y: 20 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden focus:outline-none"
+                                    onClick={(e) => e.stopPropagation()}
+                                    onTouchStart={handleTouchStart}
+                                    onTouchMove={handleTouchMove}
+                                    onTouchEnd={handleTouchEnd}
+                                >
+                                    <div className="relative md:w-2/3 flex-shrink-0 bg-gray-900 flex items-center justify-center">
+                                        <SafeImage
+                                            src={`${baseUrl}${queryParams}&w=800`}
+                                            srcSet={`${baseUrl}${queryParams}&w=400 400w, ${baseUrl}${queryParams}&w=800 800w, ${baseUrl}${queryParams}&w=1200 1200w`}
+                                            sizes="(max-width: 767px) 90vw, 66vw"
+                                            alt={currentImage.alt}
+                                            className="w-full h-auto max-h-[50vh] md:max-h-[90vh] object-contain"
+                                        />
+                                        <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Previous image">
+                                            <ChevronLeftIcon className="h-6 w-6" />
+                                        </button>
+                                        <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Next image">
+                                            <ChevronRightIcon className="h-6 w-6" />
+                                        </button>
+                                    </div>
 
-                            <button onClick={closeModal} className="absolute top-2 right-2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close gallery view">
-                                <XIcon className="h-6 w-6" />
-                            </button>
-                        </motion.div>
-                    </motion.div>
-                )}
+                                    <div className="p-6 md:w-1/3 flex flex-col justify-center">
+                                        <h3 id="gallery-modal-title" className="text-2xl font-bold text-gray-900 font-heading">{currentImage.title}</h3>
+                                        <p id="gallery-modal-description" className="mt-2 text-gray-700">{currentImage.description}</p>
+                                    </div>
+
+                                    <button onClick={closeModal} className="absolute top-2 right-2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close gallery view">
+                                        <XIcon className="h-6 w-6" />
+                                    </button>
+                                </motion.div>
+                            </motion.div>
+                        );
+                    })()
+                }
             </AnimatePresence>
         </section>
     );

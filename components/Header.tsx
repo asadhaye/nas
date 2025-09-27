@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
-        { href: '#about', label: 'About Dr. Shair' },
+        { href: '#about', label: 'About Dr. Sher' },
         { href: '#conditions', label: 'Treatments' },
         { href: '#testimonials', label: 'Testimonials' },
         { href: '#gallery', label: 'Gallery' },
@@ -57,8 +57,9 @@ const Header: React.FC = () => {
             <div className="container mx-auto px-6 flex justify-between items-center h-16">
                 <a href="#" className="flex-shrink-0 font-heading" onClick={(e) => handleScroll(e, '#hero')}>
                     <SafeImage 
-                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
-                        alt="Dr. Naveed Ali Shair Logo" 
+                        fetchPriority="high"
+                        src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png?w=256&q=90" 
+                        alt="Dr. Naveed Ali Sher Logo" 
                         className="h-16 w-auto" 
                     />
                 </a>

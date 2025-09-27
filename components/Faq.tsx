@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const faqData: FaqItem[] = [
     {
         question: "What should I expect during my first orthopedic consultation?",
-        answer: "Your first visit will include a comprehensive review of your medical history, a physical examination of the affected area, and a discussion of your symptoms. Dr. Shair may also order diagnostic imaging like X-rays or an MRI to get a clearer picture of your condition."
+        answer: "Your first visit will include a comprehensive review of your medical history, a physical examination of the affected area, and a discussion of your symptoms. Dr. Sher may also order diagnostic imaging like X-rays or an MRI to get a clearer picture of your condition."
     },
     {
         question: "How long is the recovery period for a total knee replacement?",

@@ -28,8 +28,9 @@ const Footer: React.FC = () => {
                     <div className="md:col-span-2 lg:col-span-1">
                         <a href="#" onClick={(e) => handleScroll(e, '#hero')} className="block mb-4">
                             <SafeImage 
-                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png" 
-                                alt="Dr. Naveed Ali Shair Logo" 
+                                loading="lazy"
+                                src="https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/nas-logo-1.png?w=200&q=90" 
+                                alt="Dr. Naveed Ali Sher Logo" 
                                 className="h-10 w-auto" 
                             />
                         </a>
@@ -42,7 +43,7 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="font-semibold text-white mb-4 tracking-wider font-heading">Quick Links</h4>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#about" onClick={(e) => handleScroll(e, '#about')} className="hover:text-white transition-colors">About Dr. Shair</a></li>
+                            <li><a href="#about" onClick={(e) => handleScroll(e, '#about')} className="hover:text-white transition-colors">About Dr. Sher</a></li>
                             <li><a href="#conditions" onClick={(e) => handleScroll(e, '#conditions')} className="hover:text-white transition-colors">Treatments</a></li>
                             <li><a href="#gallery" onClick={(e) => handleScroll(e, '#gallery')} className="hover:text-white transition-colors">Gallery</a></li>
                             <li><a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="hover:text-white transition-colors">Patient FAQs</a></li>
@@ -74,7 +75,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="bg-slate-800 py-4">
                 <div className="container mx-auto px-6 text-center text-sm text-gray-400">
-                    <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Shair. All Rights Reserved. This website is for informational purposes only.</p>
+                    <p>&copy; {new Date().getFullYear()} Dr. Naveed Ali Sher. All Rights Reserved. This website is for informational purposes only.</p>
                     <p className="mt-2">
                         Made with <span className="text-red-500">&hearts;</span> by <a href="https://www.asadhaye.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-300 hover:text-white transition-colors">Muhammad Asad Haye</a>
                     </p>

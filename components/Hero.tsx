@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
         },
     };
     
-    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Shair%20Headshot.png";
+    const imageUrlBase = "https://pwrwwtasf4ic26f4.public.blob.vercel-storage.com/AI%20Images/Dr%20Sher%20Headshot.png";
     
     const focusButtonAfterAnimation = () => {
         appointmentButtonRef.current?.focus({ preventScroll: true });
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
                             className="text-5xl md:text-7xl font-extrabold tracking-tight my-4 font-heading"
                             style={{ textShadow: '2px 2px 8px rgba(0, 0, 0, 0.2)' }}
                         >
-                            Dr. Naveed Ali Shair
+                            Dr. Naveed Ali Sher
                         </motion.h1>
                         <motion.p variants={itemVariants} className="text-lg md:text-xl text-white max-w-xl mx-auto md:mx-0" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.3)' }}>
                             Expert care in knee replacement, hip replacement, and ACL reconstruction to restore your mobility and enhance your quality of life.
@@ -118,9 +118,9 @@ const Hero: React.FC = () => {
                             fetchPriority="high"
                             src={`${imageUrlBase}?w=800`} 
                             srcSet={`${imageUrlBase}?w=400 400w, ${imageUrlBase}?w=800 800w, ${imageUrlBase}?w=1200 1200w`}
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            alt="Professional portrait of Dr. Naveed Ali Shair" 
-                            className="w-full max-w-md h-auto rounded-full object-cover shadow-2xl border-8 border-white/20"
+                            sizes="(max-width: 767px) 80vw, 50vw"
+                            alt="Professional portrait of Dr. Naveed Ali Sher" 
+                            className="w-4/5 max-w-sm md:w-full md:max-w-md aspect-square rounded-full object-cover object-top shadow-2xl border-8 border-white/20"
                         />
                     </motion.div>
                 </div>

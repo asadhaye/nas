@@ -7,7 +7,7 @@ const testimonials = [
         name: "Waleed Ilyas",
     },
     {
-        quote: "Dr. Naveed Ali Shair is one of the best orthopedic surgeon in Lahore. He is very competent, professional and a cooperative doctor. He did my ACL Reconstruction surgery and it went very well. Highly recommended.",
+        quote: "Dr. Naveed Ali Sher is one of the best orthopedic surgeon in Lahore. He is very competent, professional and a cooperative doctor. He did my ACL Reconstruction surgery and it went very well. Highly recommended.",
         name: "Amna Aslam",
     },
     {

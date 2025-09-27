@@ -18,7 +18,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const keywordsTag = document.querySelector('meta[name="keywords"]');
         if (keywordsTag) {
-            const baseKeywords = "Orthopedic Surgeon Lahore, Dr. Naveed Ali Shair, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA";
+            const baseKeywords = "Orthopedic Surgeon Lahore, Dr. Naveed Ali Sher, knee replacement, hip replacement, ACL surgery, trauma surgeon, joint replacement, Farooq Hospital DHA";
             const dynamicKeywords = conditionsData.map(c => c.title).join(', ');
             keywordsTag.setAttribute('content', `${`${baseKeywords}, ${dynamicKeywords}`}`);
         }
