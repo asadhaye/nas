@@ -32,7 +32,7 @@ const App: React.FC = () => {
                 <AnimatedSection>
                     <About />
                 </AnimatedSection>
-                <SectionDivider className="text-sky-50" />
+                <SectionDivider className="text-white" />
                 <AnimatedSection>
                     <Conditions />
                 </AnimatedSection>

@@ -29,20 +29,20 @@ const About: React.FC = () => {
     const portraitSizes = "(min-width: 768px) 45vw, 90vw";
 
     return (
-        <section id="about" tabIndex={-1} className="py-24 bg-sky-50 focus:outline-none" aria-labelledby="about-heading">
+        <section id="about" tabIndex={-1} className="pb-24 focus:outline-none" aria-labelledby="about-heading">
             <div className="container mx-auto px-6">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-5xl mx-auto relative z-10 -mt-32 md:-mt-40">
                     {/* Main Profile Card */}
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center bg-white p-8 rounded-xl shadow-xl">
                         {/* Image Column */}
-                        <div className="w-full">
+                        <div className="w-full -mx-8 -mt-8 md:m-0">
                             <SafeImage 
                                 loading="lazy"
                                 src={imageUrlBase}
                                 srcSet={portraitSrcSet}
                                 sizes={portraitSizes}
                                 alt="Dr. Sher professional portrait" 
-                                className="rounded-xl shadow-md w-full h-auto object-cover"
+                                className="rounded-t-xl md:rounded-xl shadow-md w-full h-auto object-cover"
                             />
                         </div>
 
